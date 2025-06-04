@@ -1,0 +1,186 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+        <div class="header-details">
+            <input name="name" type="text" value="{{actor.name}}" placeholder="Character Name"/>
+            <div class="header-info">
+                <input name="system.concept" type="text" value="{{system.concept}}" placeholder="Core Concept"/>
+                <input name="system.motivation" type="text" value="{{system.motivation}}" placeholder="Driving Motivation"/>
+                <input name="system.trouble" type="text" value="{{system.trouble}}" placeholder="Intrinsic Trouble"/>
+            </div>
+        </div>
+    </header>
+
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item" data-tab="description">Description</a>
+        <a class="item" data-tab="attributes">Attributes & Skills</a>
+        <a class="item" data-tab="inventory">Inventory & Resonances</a>
+        <a class="item" data-tab="notes">Notes & Relationships</a>
+    </nav>
+
+    <section class="sheet-body">
+        <div class="tab description" data-tab="description">
+            <div class="editor-container">
+                <label>Character Description</label>
+                {{editor system.notes target="system.notes" button=true owner=owner editable=editable}}
+            </div>
+        </div>
+
+        <div class="tab attributes" data-tab="attributes">
+            <div class="actor-sheet-body">
+                <div class="main-content">
+                    <div class="health-strain-section">
+                        <h3>Vitality & Strain</h3>
+                        <div class="flexrow health-strain-inputs">
+                            <div class="form-group">
+                                <label for="healthValue">Health</label>
+                                <input id="healthValue" name="system.health.value" type="number" value="{{system.health.value}}" data-dtype="Number"/> /
+                                <input name="system.health.max" type="number" value="{{system.health.max}}" data-dtype="Number"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="strainValue">Resonant Strain</label>
+                                <input id="strainValue" name="system.strain.value" type="number" value="{{system.strain.value}}" data-dtype="Number"/> /
+                                <input name="system.strain.max" type="number" value="{{system.strain.max}}" data-dtype="Number"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Fragmented?</label>
+                                <input type="checkbox" name="system.fragmented" {{checked system.fragmented}}/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="attributes-section">
+                        <h3>Attributes (Type, Suit, Rank)</h3>
+                        <div class="flexrow">
+                            {{!-- Physical --}}
+                            <div class="flexcol attribute-group">
+                                <h4>Physical ({{attributes.physical.suit}})</h4>
+                                <label for="physicalType">Type</label>
+                                <input type="text" name="system.attributes.physical.type" value="{{attributes.physical.type}}" disabled/>
+                                <label for="physicalRank">Rank</label>
+                                <input id="physicalRank" type="number" name="system.attributes.physical.rank" value="{{attributes.physical.rank}}" data-dtype="Number"/>
+                            </div>
+                            {{!-- Social --}}
+                            <div class="flexcol attribute-group">
+                                <h4>Social ({{attributes.social.suit}})</h4>
+                                <label for="socialType">Type</label>
+                                <input type="text" name="system.attributes.social.type" value="{{attributes.social.type}}" disabled/>
+                                <label for="socialRank">Rank</label>
+                                <input id="socialRank" type="number" name="system.attributes.social.rank" value="{{attributes.social.rank}}" data-dtype="Number"/>
+                            </div>
+                            {{!-- Spiritual --}}
+                            <div class="flexcol attribute-group">
+                                <h4>Spiritual ({{attributes.spiritual.suit}})</h4>
+                                <label for="spiritualType">Type</label>
+                                <input type="text" name="system.attributes.spiritual.type" value="{{attributes.spiritual.type}}" disabled/>
+                                <label for="spiritualRank">Rank</label>
+                                <input id="spiritualRank" type="number" name="system.attributes.spiritual.rank" value="{{attributes.spiritual.rank}}" data-dtype="Number"/>
+                            </div>
+                            {{!-- Intellectual --}}
+                            <div class="flexcol attribute-group">
+                                <h4>Intellectual ({{attributes.intellectual.suit}})</h4>
+                                <label for="intellectualType">Type</label>
+                                <input type="text" name="system.attributes.intellectual.type" value="{{attributes.intellectual.type}}" disabled/>
+                                <label for="intellectualRank">Rank</label>
+                                <input id="intellectualRank" type="number" name="system.attributes.intellectual.rank" value="{{attributes.intellectual.rank}}" data-dtype="Number"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar">
+                    <div class="skills-section">
+                        <h3>Skills</h3>
+                        <div class="skill-list">
+                            {{#each allSkills as |skillName|}}
+                            <div class="skill-item">
+                                <input type="checkbox" name="system.skills" data-skill="{{skillName}}" {{checked (includes system.skills skillName)}} class="skill-checkbox"/>
+                                <label>{{skillName}}</label>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab inventory" data-tab="inventory">
+            <div class="main-content">
+                <div class="resonances-section">
+                    <h3>Resonances</h3>
+                    <p><i>Powers over fate. Check to indicate mastery.</i></p>
+                    <div class="flexcol">
+                        <div class="resonance-checkbox">
+                            <input type="checkbox" name="system.resonances.echoOfPossibility" {{checked system.resonances.echoOfPossibility}}/>
+                            <label>Echo of Possibility</label>
+                        </div>
+                        <div class="resonance-checkbox">
+                            <input type="checkbox" name="system.resonances.chronoFlux" {{checked system.resonances.chronoFlux}}/>
+                            <label>Chrono-Flux</label>
+                        </div>
+                        <div class="resonance-checkbox">
+                            <input type="checkbox" name="system.resonances.veilPierce" {{checked system.resonances.veilPierce}}/>
+                            <label>Veil Pierce</label>
+                        </div>
+                        <div class="resonance-checkbox">
+                            <input type="checkbox" name="system.resonances.resonantOverload" {{checked system.resonances.resonantOverload}}/>
+                            <label>Resonant Overload</label>
+                        </div>
+                        <div class="form-group">
+                            <label>Unique Resonance Power</label>
+                            <input type="text" name="system.resonances.uniqueResonancePower" value="{{system.resonances.uniqueResonancePower}}" placeholder="e.g., Temporal Loop"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inventory-section">
+                    <h3>Inventory</h3>
+                    <ol class="items-list">
+                        <li class="item-header flexrow">
+                            <div class="item-name">Name</div>
+                            <div class="item-quantity">Qty</div>
+                            <div class="item-controls"></div>
+                        </li>
+                        {{#each actor.items as |item id|}}
+                        <li class="item flexrow" data-item-id="{{item._id}}">
+                            <div class="item-name flexrow">
+                                <img class="item-img" src="{{item.img}}" title="{{item.name}}" width="24" height="24"/>
+                                <h4>{{item.name}}</h4>
+                            </div>
+                            <div class="item-quantity">{{item.system.quantity}}</div>
+                            <div class="item-controls">
+                                <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                                <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                            </div>
+                        </li>
+                        {{/each}}
+                    </ol>
+                    <button type="button" class="item-create" data-type="item"><i class="fas fa-plus"></i> Add Item</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab notes" data-tab="notes">
+            <div class="main-content">
+                <div class="form-group">
+                    <label>General Notes</label>
+                    {{editor system.notes target="system.notes" button=true owner=owner editable=editable}}
+                </div>
+                <div class="relationships-section">
+                    <h3>Relationships</h3>
+                    <p><i>Important connections forged in the Cascade.</i></p>
+                    <div class="flexcol">
+                        {{#each system.relationships as |rel index|}}
+                            <div class="flexrow" style="margin-bottom: 5px;">
+                                <input type="text" name="system.relationships.{{index}}.name" value="{{rel.name}}" placeholder="NPC Name" style="flex: 2;"/>
+                                <input type="text" name="system.relationships.{{index}}.bond" value="{{rel.bond}}" placeholder="Bond (e.g., 'Strong', 'Fragile')" style="flex: 1;"/>
+                                <button type="button" class="remove-relationship" data-index="{{index}}" style="flex: 0 0 30px;"><i class="fas fa-trash"></i></button>
+                            </div>
+                        {{/each}}
+                        <button type="button" class="add-relationship"><i class="fas fa-plus"></i> Add Relationship</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>

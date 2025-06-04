@@ -1,0 +1,52 @@
+{
+  "id": "resonance-zero-srp",
+  "title": "Resonance Zero SRP",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "11.307",
+    "verified": "13.342"
+  },
+  "authors": [
+    {
+      "name": "Cixtian Trybe",
+      "url": "https://yourwebsite.com",
+      "email": "your.email@example.com"
+    }
+  ],
+ "url": "https://github.com/devcix/resonance-zero-srp",
+ "manifest": "https://github.com/devcix/resonance-zero-srp/releases/latest/download/system.json",
+ "download": "https://github.com/devcix/resonance-zero-srp/releases/latest/download/resonance-zero-srp.zip",
+  "esmodules": ["resonance-zero-srp.mjs"],
+  "styles": ["resonance-zero-srp.css"],
+  "packs": [
+    {
+      "name": "actors",
+      "label": "Resonance Zero Actors",
+      "path": "packs/actors.db",
+      "type": "Actor",
+      "system": "resonance-zero-srp",
+      "private": false
+    },
+    {
+      "name": "items",
+      "label": "Resonance Zero Items",
+      "path": "packs/items.db",
+      "type": "Item",
+      "system": "resonance-zero-srp",
+      "private": false
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "grid": {
+    "distance": 1,
+    "units": "meter"
+  },
+  "primaryTokenAttribute": "health",
+  "secondaryTokenAttribute": "strain"
+}

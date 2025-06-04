@@ -1,0 +1,250 @@
+/* Styles for the Resonance Zero Solitaire module */
+
+.rz-solitaire-module.solitaire-board {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f0f0f0;
+    background: #1a1a1a; /* Darker background for the game board */
+    border: 2px solid #007bff; /* Accent border */
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.5); /* Glowing effect */
+}
+
+.rz-solitaire-module.solitaire-board .window-header {
+    background: #007bff; /* Bright blue header */
+    color: #fff;
+    border-bottom: none;
+}
+
+.rz-solitaire-module.solitaire-board .window-title {
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.rz-solitaire-module.solitaire-board .solitaire-container {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 40px); /* Adjust for header */
+    padding: 10px;
+    gap: 15px;
+}
+
+.rz-solitaire-module.solitaire-board .top-area {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.rz-solitaire-module.solitaire-board .card-pile {
+    width: 90px; /* Standard card width */
+    height: 120px; /* Standard card height */
+    border: 2px dashed #4a4a4a;
+    background: #333;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+    font-size: 0.9em;
+    overflow: hidden;
+    position: relative;
+}
+
+.rz-solitaire-module.solitaire-board .card-pile.deck {
+    border-style: solid;
+    cursor: pointer;
+    background: #007bff; /* Blue for the deck */
+    border-color: #0056b3;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+    color: #fff;
+}
+
+.rz-solitaire-module.solitaire-board .card-pile.hand {
+    border-color: #5cb85c; /* Green for hand */
+    background: #4CAF50;
+    position: relative;
+}
+
+.rz-solitaire-module.solitaire-board .card-pile.discard {
+    border-color: #f0ad4e; /* Orange for discard */
+    background: #ffc107;
+}
+
+.rz-solitaire-module.solitaire-board .card-pile .card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure card image fits */
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.rz-solitaire-module.solitaire-board .card-pile .card-back {
+    background-color: #c0392b; /* Red back for cards */
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.rz-solitaire-module.solitaire-board .card-pile .card-text {
+    z-index: 1; /* Keep text above card image */
+}
+
+.rz-solitaire-module.solitaire-board .tableau-area {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    align-items: flex-start; /* Stacks start from top */
+}
+
+.rz-solitaire-module.solitaire-board .tableau-stack {
+    flex: 1;
+    min-width: 90px;
+    max-width: 120px;
+    border: 1px solid #555;
+    background: #252525;
+    border-radius: 5px;
+    min-height: 150px; /* Ensure stacks have some height */
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.rz-solitaire-module.solitaire-board .tableau-stack .card-image {
+    position: absolute; /* Stack cards on top of each other */
+    width: 90px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: -100px; /* Overlap cards */
+    transition: top 0.2s ease; /* Smooth transition for stacking */
+}
+
+/* Adjust top position for stacked cards */
+.rz-solitaire-module.solitaire-board .tableau-stack .card-image:nth-child(n) { top: calc(5px + var(--card-index) * 20px); z-index: var(--card-index); }
+.rz-solitaire-module.solitaire-board .tableau-stack .card-image:last-child { position: relative; margin-bottom: 0; } /* Last card is positioned normally for bottom alignment */
+
+
+.rz-solitaire-module.solitaire-board .control-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.rz-solitaire-module.solitaire-board button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.rz-solitaire-module.solitaire-board button:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+
+.rz-solitaire-module.solitaire-board button:active {
+    transform: translateY(1px);
+}
+
+/* Specific chat message styling for challenges */
+.rz-challenge-chat-card {
+    background: #2b2b2b;
+    border: 1px solid #007bff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+.rz-challenge-chat-card .rz-challenge-title {
+    color: #007bff;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.rz-challenge-chat-card .rz-challenge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #4a4a4a;
+    padding-bottom: 5px;
+}
+
+.rz-challenge-chat-card .rz-challenge-card {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffc107; /* Gold for card */
+}
+
+.rz-challenge-chat-card .rz-challenge-level {
+    font-size: 1.1em;
+    color: #e0e0e0;
+}
+
+.rz-challenge-chat-card .rz-challenge-theme {
+    color: #fff;
+    font-size: 1.3em;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.rz-challenge-chat-card p {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.rz-challenge-chat-card .rz-attribute {
+    font-weight: bold;
+    color: #5cb85c; /* Green for attributes */
+}
+
+.rz-challenge-chat-card .rz-narrative-prompt {
+    font-style: italic;
+    color: #bbb;
+    background: #333;
+    border-left: 3px solid #007bff;
+    padding: 8px 10px;
+    margin-top: 15px;
+    border-radius: 3px;
+}
+
+.rz-challenge-chat-card .rz-roll-section {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px dashed #4a4a4a;
+}
+
+.rz-challenge-chat-card .rz-challenge-roll-button {
+    background: #28a745; /* Green button for rolling */
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.rz-challenge-chat-card .rz-challenge-roll-button:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+}

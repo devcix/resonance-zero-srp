@@ -1,0 +1,65 @@
+// This file holds the detailed challenge data for Resonance Zero SRP,
+// used by the solitaire module to generate encounters.
+
+export const challengeData = {
+    '♠': { // Spiritual Challenges
+        'A': { threat: 'Minor', theme: 'Reality Fracture (Unstable Perception)', primaryAttr: 'Spiritual', skills: ['Investigation', 'Deduction'], abilities: ['Warped Vision (Illusions)'], rewards: ['Echoed Memories (Reveal lore)'] },
+        '2': { threat: 'Minor', theme: 'Reality Fracture (Unstable Perception)', primaryAttr: 'Spiritual', skills: ['Investigation', 'Deduction'], abilities: ['Warped Vision (Illusions)'], rewards: ['Echoed Memories (Reveal lore)'] },
+        '3': { threat: 'Minor', theme: 'Reality Fracture (Unstable Perception)', primaryAttr: 'Spiritual', skills: ['Investigation', 'Deduction'], abilities: ['Warped Vision (Illusions)'], rewards: ['Echoed Memories (Reveal lore)'] },
+        '4': { threat: 'Minor', theme: 'Reality Fracture (Unstable Perception)', primaryAttr: 'Spiritual', skills: ['Investigation', 'Deduction'], abilities: ['Warped Vision (Illusions)'], rewards: ['Echoed Memories (Reveal lore)'] },
+        '5': { threat: 'Minor', theme: 'Reality Fracture (Unstable Perception)', primaryAttr: 'Spiritual', skills: ['Investigation', 'Deduction'], abilities: ['Warped Vision (Illusions)'], rewards: ['Echoed Memories (Reveal lore)'] },
+        '6': { threat: 'Moderate', theme: 'Cascade Corruption (Mind Influence)', primaryAttr: 'Spiritual', skills: ['Meditation', 'Rituals'], abilities: ['Psychic Resistance (Mental Strain test)'], rewards: ['Resonance Surge (+1 to next roll)'] },
+        '7': { threat: 'Moderate', theme: 'Cascade Corruption (Mind Influence)', primaryAttr: 'Spiritual', skills: ['Meditation', 'Rituals'], abilities: ['Psychic Resistance (Mental Strain test)'], rewards: ['Resonance Surge (+1 to next roll)'] },
+        '8': { threat: 'Moderate', theme: 'Cascade Corruption (Mind Influence)', primaryAttr: 'Spiritual', skills: ['Meditation', 'Rituals'], abilities: ['Psychic Resistance (Mental Strain test)'], rewards: ['Resonance Surge (+1 to next roll)'] },
+        '9': { threat: 'Moderate', theme: 'Cascade Corruption (Mind Influence)', primaryAttr: 'Spiritual', skills: ['Meditation', 'Rituals'], abilities: ['Psychic Resistance (Mental Strain test)'], rewards: ['Resonance Surge (+1 to next roll)'] },
+        '10': { threat: 'Moderate', theme: 'Cascade Corruption (Mind Influence)', primaryAttr: 'Spiritual', skills: ['Meditation', 'Rituals'], abilities: ['Psychic Resistance (Mental Strain test)'], rewards: ['Resonance Surge (+1 to next roll)'] },
+        'J': { threat: 'Major', theme: 'Entity of the Forgotten (Psychic Haunting)', primaryAttr: 'Spiritual', skills: ['Negotiation', 'Persuasion'], abilities: ['Thought Echo (Mimics Player Actions)'], rewards: ['Hidden Knowledge (Unlock hidden NPC truth)'] },
+        'Q': { threat: 'Major', theme: 'Entity of the Forgotten (Psychic Haunting)', primaryAttr: 'Spiritual', skills: ['Negotiation', 'Persuasion'], abilities: ['Thought Echo (Mimics Player Actions)'], rewards: ['Hidden Knowledge (Unlock hidden NPC truth)'] },
+        'K': { threat: 'Severe', theme: 'Conduit Collapse (Reality Implosion)', primaryAttr: 'Spiritual', skills: ['Dreamwalking', 'Engineering'], abilities: ['Temporal Displacement (Shifts time forward/back)'], rewards: ['Unique Resonance Power (1-time effect)'] }
+    },
+    '♥': { // Social Challenges
+        'A': { threat: 'Minor', theme: 'False Alliances (Social Deception)', primaryAttr: 'Social', skills: ['Deception', 'Leadership'], abilities: ['Emotional Contagion (Influences others)'], rewards: ['Trust Token (Improves NPC reactions)'] },
+        '2': { threat: 'Minor', theme: 'False Alliances (Social Deception)', primaryAttr: 'Social', skills: ['Deception', 'Leadership'], abilities: ['Emotional Contagion (Influences others)'], rewards: ['Trust Token (Improves NPC reactions)'] },
+        '3': { threat: 'Minor', theme: 'False Alliances (Social Deception)', primaryAttr: 'Social', skills: ['Deception', 'Leadership'], abilities: ['Emotional Contagion (Influences others)'], rewards: ['Trust Token (Improves NPC reactions)'] },
+        '4': { threat: 'Minor', theme: 'False Alliances (Social Deception)', primaryAttr: 'Social', skills: ['Deception', 'Leadership'], abilities: ['Emotional Contagion (Influences others)'], rewards: ['Trust Token (Improves NPC reactions)'] },
+        '5': { threat: 'Minor', theme: 'False Alliances (Social Deception)', primaryAttr: 'Social', skills: ['Deception', 'Leadership'], abilities: ['Emotional Contagion (Influences others)'], rewards: ['Trust Token (Improves NPC reactions)'] },
+        '6': { threat: 'Moderate', theme: 'Betrayal Surge (Lost Bonds)', primaryAttr: 'Social', skills: ['Expression', 'Influence'], abilities: ['Forced Perspective (NPC shifts opinion)'], rewards: ['Diplomatic Insight (Reputation gain)'] },
+        '7': { threat: 'Moderate', theme: 'Betrayal Surge (Lost Bonds)', primaryAttr: 'Social', skills: ['Expression', 'Influence'], abilities: ['Forced Perspective (NPC shifts opinion)'], rewards: ['Diplomatic Insight (Reputation gain)'] },
+        '8': { threat: 'Moderate', theme: 'Betrayal Surge (Lost Bonds)', primaryAttr: 'Social', skills: ['Expression', 'Influence'], abilities: ['Forced Perspective (NPC shifts opinion)'], rewards: ['Diplomatic Insight (Reputation gain)'] },
+        '9': { threat: 'Moderate', theme: 'Betrayal Surge (Lost Bonds)', primaryAttr: 'Social', skills: ['Expression', 'Influence'], abilities: ['Forced Perspective (NPC shifts opinion)'], rewards: ['Diplomatic Insight (Reputation gain)'] },
+        '10': { threat: 'Moderate', theme: 'Betrayal Surge (Lost Bonds)', primaryAttr: 'Social', skills: ['Expression', 'Influence'], abilities: ['Forced Perspective (NPC shifts opinion)'], rewards: ['Diplomatic Insight (Reputation gain)'] },
+        'J': { threat: 'Major', theme: 'Identity Collapse (Self-Fracture)', primaryAttr: 'Social', skills: ['Negotiation', 'Rituals'], abilities: ['Dual Mind (Two versions of self exist)'], rewards: ['Restored Fragments (Reclaim lost XP)'] },
+        'Q': { threat: 'Major', theme: 'Identity Collapse (Self-Fracture)', primaryAttr: 'Social', skills: ['Negotiation', 'Rituals'], abilities: ['Dual Mind (Two versions of self exist)'], rewards: ['Restored Fragments (Reclaim lost XP)'] },
+        'K': { threat: 'Severe', theme: 'Heart of the Cascade (Emotional Core Shift)', primaryAttr: 'Social', skills: ['Dreamwalking', 'Persuasion'], abilities: ['Mirror of Fate (Future choices revealed)'], rewards: ['Permanent Relationship Bond (NPC ally)'] }
+    },
+    '♦': { // Physical Challenges
+        'A': { threat: 'Minor', theme: 'Unstable Terrain (Fracturing Space)', primaryAttr: 'Physical', skills: ['Acrobatics', 'Stealth'], abilities: ['Phase Shift (Short teleport)'], rewards: ['Salvaged Supplies (Basic resources)'] },
+        '2': { threat: 'Minor', theme: 'Unstable Terrain (Fracturing Space)', primaryAttr: 'Physical', skills: ['Acrobatics', 'Stealth'], abilities: ['Phase Shift (Short teleport)'], rewards: ['Salvaged Supplies (Basic resources)'] },
+        '3': { threat: 'Minor', theme: 'Unstable Terrain (Fracturing Space)', primaryAttr: 'Physical', skills: ['Acrobatics', 'Stealth'], abilities: ['Phase Shift (Short teleport)'], rewards: ['Salvaged Supplies (Basic resources)'] },
+        '4': { threat: 'Minor', theme: 'Unstable Terrain (Fracturing Space)', primaryAttr: 'Physical', skills: ['Acrobatics', 'Stealth'], abilities: ['Phase Shift (Short teleport)'], rewards: ['Salvaged Supplies (Basic resources)'] },
+        '5': { threat: 'Minor', theme: 'Unstable Terrain (Fracturing Space)', primaryAttr: 'Physical', skills: ['Acrobatics', 'Stealth'], abilities: ['Phase Shift (Short teleport)'], rewards: ['Salvaged Supplies (Basic resources)'] },
+        '6': { threat: 'Moderate', theme: 'Cascade Storm (Reality Erosion)', primaryAttr: 'Physical', skills: ['Resilience', 'Tactics'], abilities: ['Dimensional Resistance (Avoid terrain damage)'], rewards: ['Momentum Surge (+1 movement action)'] },
+        '7': { threat: 'Moderate', theme: 'Cascade Storm (Reality Erosion)', primaryAttr: 'Physical', skills: ['Resilience', 'Tactics'], abilities: ['Dimensional Resistance (Avoid terrain damage)'], rewards: ['Momentum Surge (+1 movement action)'] },
+        '8': { threat: 'Moderate', theme: 'Cascade Storm (Reality Erosion)', primaryAttr: 'Physical', skills: ['Resilience', 'Tactics'], abilities: ['Dimensional Resistance (Avoid terrain damage)'], rewards: ['Momentum Surge (+1 movement action)'] },
+        '9': { threat: 'Moderate', theme: 'Cascade Storm (Reality Erosion)', primaryAttr: 'Physical', skills: ['Resilience', 'Tactics'], abilities: ['Dimensional Resistance (Avoid terrain damage)'], rewards: ['Momentum Surge (+1 movement action)'] },
+        '10': { threat: 'Moderate', theme: 'Cascade Storm (Reality Erosion)', primaryAttr: 'Physical', skills: ['Resilience', 'Tactics'], abilities: ['Dimensional Resistance (Avoid terrain damage)'], rewards: ['Momentum Surge (+1 movement action)'] },
+        'J': { threat: 'Major', theme: 'Shattered Gate (Barrier Between Worlds)', primaryAttr: 'Physical', skills: ['Investigation', 'Rituals'], abilities: ['Gateway Pulse (Temporary portal creation)'], rewards: ['Spatial Key (Unlock new travel routes)'] },
+        'Q': { threat: 'Major', theme: 'Shattered Gate (Barrier Between Worlds)', primaryAttr: 'Physical', skills: ['Investigation', 'Rituals'], abilities: ['Gateway Pulse (Temporary portal creation)'], rewards: ['Spatial Key (Unlock new travel routes)'] },
+        'K': { threat: 'Severe', theme: 'Collapse of Reality (Environmental Doom)', primaryAttr: 'Physical', skills: ['Channeling', 'Meditation'], abilities: ['Forced Stabilization (Hold reality in place)'], rewards: ['Unlock Cascade Node (Access new world segment)'] }
+    },
+    '♣': { // Intellectual Challenges
+        'A': { threat: 'Minor', theme: 'Paradox Creature (Weak Reality Disturbance)', primaryAttr: 'Intellectual', skills: ['Evasion', 'Unarmed'], abilities: ['Adaptive Reflex (Predict enemy move)'], rewards: ['Basic Supply Cache'] },
+        '2': { threat: 'Minor', theme: 'Paradox Creature (Weak Reality Disturbance)', primaryAttr: 'Intellectual', skills: ['Evasion', 'Unarmed'], abilities: ['Adaptive Reflex (Predict enemy move)'], rewards: ['Basic Supply Cache'] },
+        '3': { threat: 'Minor', theme: 'Paradox Creature (Weak Reality Disturbance)', primaryAttr: 'Intellectual', skills: ['Evasion', 'Unarmed'], abilities: ['Adaptive Reflex (Predict enemy move)'], rewards: ['Basic Supply Cache'] },
+        '4': { threat: 'Minor', theme: 'Paradox Creature (Weak Reality Disturbance)', primaryAttr: 'Intellectual', skills: ['Evasion', 'Unarmed'], abilities: ['Adaptive Reflex (Predict enemy move)'], rewards: ['Basic Supply Cache'] },
+        '5': { threat: 'Minor', theme: 'Paradox Creature (Weak Reality Disturbance)', primaryAttr: 'Intellectual', skills: ['Evasion', 'Unarmed'], abilities: ['Adaptive Reflex (Predict enemy move)'], rewards: ['Basic Supply Cache'] },
+        '6': { threat: 'Moderate', theme: 'Hostile Echo (Reality-Warped Foe)', primaryAttr: 'Intellectual', skills: ['Acrobatics', 'Stealth'], abilities: ['Phase Dodge (Avoid one attack)'], rewards: ['Salvaged Resonance Core (Enhance ability)'] },
+        '7': { threat: 'Moderate', theme: 'Hostile Echo (Reality-Warped Foe)', primaryAttr: 'Intellectual', skills: ['Acrobatics', 'Stealth'], abilities: ['Phase Dodge (Avoid one attack)'], rewards: ['Salvaged Resonance Core (Enhance ability)'] },
+        '8': { threat: 'Moderate', theme: 'Hostile Echo (Reality-Warped Foe)', primaryAttr: 'Intellectual', skills: ['Acrobatics', 'Stealth'], abilities: ['Phase Dodge (Avoid one attack)'], rewards: ['Salvaged Resonance Core (Enhance ability)'] },
+        '9': { threat: 'Moderate', theme: 'Hostile Echo (Reality-Warped Foe)', primaryAttr: 'Intellectual', skills: ['Acrobatics', 'Stealth'], abilities: ['Phase Dodge (Avoid one attack)'], rewards: ['Salvaged Resonance Core (Enhance ability)'] },
+        '10': { threat: 'Moderate', theme: 'Hostile Echo (Reality-Warped Foe)', primaryAttr: 'Intellectual', skills: ['Acrobatics', 'Stealth'], abilities: ['Phase Dodge (Avoid one attack)'], rewards: ['Salvaged Resonance Core (Enhance ability)'] },
+        'J': { threat: 'Major', theme: 'Unstable Guardian (Cascade Protector)', primaryAttr: 'Intellectual', skills: ['Willpower', 'Ranged'], abilities: ['Damage Absorption (Mitigate incoming harm)'], rewards: ['Powerful Artifact'] },
+        'Q': { threat: 'Major', theme: 'Unstable Guardian (Cascade Protector)', primaryAttr: 'Intellectual', skills: ['Willpower', 'Ranged'], abilities: ['Damage Absorption (Mitigate incoming harm)'], rewards: ['Powerful Artifact'] },
+        'K': { threat: 'Severe', theme: 'Cataclysmic Entity (Eldritch Cascade Horror)', primaryAttr: 'Intellectual', skills: ['Research', 'Rituals'], abilities: ['Reality Break (Shifts laws of physics)'], rewards: ['Unique Resonance Manifestation'] }
+    }
+};

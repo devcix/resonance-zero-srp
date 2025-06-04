@@ -1,0 +1,38 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+    {{!-- Sheet Header --}}
+    <header class="sheet-header flexrow">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" alt="Profile Image"/>
+        <div class="header-details flexrow">
+            <h1 class="charname">
+                <input name="name" type="text" value="{{actor.name}}" placeholder="Name"/>
+            </h1>
+
+            {{!-- Attributes --}}
+            <ul class="attributes-list flexrow">
+                <li>
+                    <label class="attribute-label">Health</label>
+                    <input name="system.attributes.health.value" type="number" value="{{actor.system.attributes.health.value}}" data-dtype="Number"/>
+                    / <input name="system.attributes.health.max" type="number" value="{{actor.system.attributes.health.max}}" data-dtype="Number"/>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    {{!-- Sheet Body --}}
+    <section class="sheet-body flexrow">
+        <div class="sidebar flexcol">
+            <div class="description-section">
+                <h2>Description</h2>
+                <textarea name="system.description" rows="10">{{actor.system.description}}</textarea>
+            </div>
+        </div>
+
+        <div class="content flexcol">
+            {{!-- Add more tabs/sections here later --}}
+            <div class="tab" data-group="main" data-tab="description">
+                <h3>Abilities</h3>
+                <p>This is where you'd list abilities.</p>
+            </div>
+        </div>
+    </section>
+</form>

@@ -1,0 +1,38 @@
+{
+  "id": "rz-solitaire-module",
+  "title": "Resonance Zero Solitaire Game",
+  "description": "Integrates the solitaire card game for encounter generation in Resonance Zero SRP.",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "11.307",
+    "verified": "13.342"
+  },
+  "authors": [
+    {
+      "name": "Your Name Here"
+    }
+  ],
+  // "url": "https://github.com/your-github-username/rz-solitaire-module",
+  // "manifest": "https://github.com/your-github-username/rz-solitaire-module/releases/latest/download/module.json",
+  // "download": "https://github.com/your-github-username/rz-solitaire-module/releases/latest/download/rz-solitaire-module.zip",
+  "esmodules": ["rz-solitaire.mjs"],
+  "styles": ["rz-solitaire.css"],
+  "relationships": {
+    "systems": [
+      {
+        "id": "resonance-zero-srp",
+        "type": "system",
+        "compatibility": {
+          "minimum": "1.0.0"
+        }
+      }
+    ]
+  },
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ]
+}

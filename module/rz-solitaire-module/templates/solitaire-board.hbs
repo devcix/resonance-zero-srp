@@ -1,0 +1,57 @@
+<div class="solitaire-container">
+    <div class="top-area">
+        <div class="card-pile draw-deck {{#if gameState.deck.length}}has-cards{{/if}}" data-pile-type="deck">
+            {{#if gameState.deck.length}}
+                <img class="card-image" src="modules/rz-solitaire-module/assets/cards/card_back.webp" title="Draw Deck"/>
+            {{else}}
+                <span class="card-text">Deck Empty</span>
+            {{/if}}
+        </div>
+
+        <div class="card-pile hand {{#if gameState.hand.length}}has-cards{{/if}}" data-pile-type="hand">
+            {{#if gameState.hand.length}}
+                {{#each gameState.hand as |card index|}}
+                    <img class="card-image" src="{{getCardImagePath card}}" data-card-suit="{{card.suit}}" data-card-rank="{{card.rank}}" title="{{card.rank}}{{card.suit}}"/>
+                {{/each}}
+            {{else}}
+                <span class="card-text">Hand</span>
+            {{/if}}
+        </div>
+
+        <div class="card-pile discard {{#if gameState.discard.length}}has-cards{{/if}}" data-pile-type="discard">
+            {{#if gameState.discard.length}}
+                {{!-- Only show the top card of the discard pile --}}
+                <img class="card-image" src="{{getCardImagePath (last gameState.discard)}}" title="{{(last gameState.discard).rank}}{{(last gameState.discard).suit}}"/>
+            {{else}}
+                <span class="card-text">Discard</span>
+            {{/if}}
+        </div>
+    </div>
+
+    <div class="tableau-area">
+        {{#each gameState.tableau as |stack stackIndex|}}
+        <div class="tableau-stack" data-stack-index="{{stackIndex}}">
+            {{#if stack.length}}
+                {{#each stack as |card cardIndex|}}
+                    <img class="card-image {{#unless card.faceUp}}card-back{{/unless}}"
+                         src="{{#if card.faceUp}}{{getCardImagePath card}}{{else}}modules/rz-solitaire-module/assets/cards/card_back.webp{{/if}}"
+                         title="{{#if card.faceUp}}{{card.rank}}{{card.suit}}{{else}}Face Down Card{{/if}}"
+                         data-card-suit="{{card.suit}}"
+                         data-card-rank="{{card.rank}}"
+                         data-card-index="{{cardIndex}}"
+                         style="--card-index: {{cardIndex}};"
+                    />
+                {{/each}}
+            {{else}}
+                <span class="card-text">Stack {{add stackIndex 1}}</span>
+            {{/if}}
+        </div>
+        {{/each}}
+    </div>
+
+    <div class="control-buttons">
+        <button type="button" class="draw-deck">Draw Card</button>
+        <button type="button" class="make-move-button">Make Move & Generate Challenge</button>
+        <button type="button" class="reset-game-button">Reset Game</button>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+        <div class="header-details">
+            <input name="name" type="text" value="{{item.name}}" placeholder="Item Name"/>
+        </div>
+    </header>
+
+    <section class="sheet-body">
+        <div class="form-group">
+            <label>Item Type</label>
+            <input type="text" name="system.type" value="{{system.type}}" placeholder="e.g., supply, artifact, key"/>
+        </div>
+        <div class="form-group flexrow">
+            <div>
+                <label>Quantity</label>
+                <input type="number" name="system.quantity" value="{{system.quantity}}" data-dtype="Number"/>
+            </div>
+            <div>
+                <label>Weight</label>
+                <input type="number" name="system.weight" value="{{system.weight}}" data-dtype="Number"/>
+            </div>
+        </div>
+        <div class="editor-container">
+            <label>Description</label>
+            {{editor system.description target="system.description" button=true owner=owner editable=editable}}
+        </div>
+    </section>
+</form>

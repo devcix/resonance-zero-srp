@@ -1,0 +1,380 @@
+/* This is the main CSS file for your Resonance Zero SRP system.
+   It will define the visual style of your character sheets and other UI elements. */
+
+/* General styles for all Resonance Zero SRP sheets */
+.resonance-zero-srp.sheet {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f0f0f0; /* Light gray text for contrast */
+    background: #2b2b2b; /* Dark background */
+    border: 1px solid #4a4a4a; /* Subtle border */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Header styling */
+.resonance-zero-srp.sheet .window-header {
+    background: #3a3a3a; /* Slightly lighter dark for header */
+    color: #e0e0e0;
+    border-bottom: 1px solid #5a5a5a;
+}
+
+.resonance-zero-srp.sheet .window-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Sheet content general styling */
+.resonance-zero-srp.sheet .sheet-body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.resonance-zero-srp.sheet .sheet-tabs {
+    flex: 0; /* Tabs won't grow */
+    border-bottom: 1px solid #4a4a4a;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.resonance-zero-srp.sheet .sheet-tabs .item {
+    color: #aaa;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+.resonance-zero-srp.sheet .sheet-tabs .item.active {
+    color: #fff;
+    background: #5a5a5a; /* Active tab background */
+    border-bottom: 2px solid #007bff; /* Accent color */
+}
+
+.resonance-zero-srp.sheet .sheet-tabs .item:hover {
+    color: #fff;
+    background: #4a4a4a;
+}
+
+/* Common form elements */
+.resonance-zero-srp.sheet input[type="text"],
+.resonance-zero-srp.sheet input[type="number"],
+.resonance-zero-srp.sheet textarea {
+    background: #3b3b3b;
+    border: 1px solid #5a5a5a;
+    color: #f0f0f0;
+    padding: 5px;
+    border-radius: 3px;
+    box-sizing: border-box; /* Include padding in element's total width/height */
+}
+
+.resonance-zero-srp.sheet label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block; /* Make labels take their own line */
+    color: #e0e0e0;
+}
+
+.resonance-zero-srp.sheet .form-group {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.resonance-zero-srp.sheet .flexrow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px; /* Space between flex items */
+}
+
+.resonance-zero-srp.sheet .flexcol {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Specific actor sheet layout */
+.resonance-zero-srp.sheet .actor-sheet-body {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    flex-grow: 1; /* Allow content to grow */
+}
+
+.resonance-zero-srp.sheet .sidebar {
+    flex: 0 0 200px; /* Fixed width sidebar */
+    background: #333;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #444;
+}
+
+.resonance-zero-srp.sheet .main-content {
+    flex: 1; /* Main content takes remaining space */
+    padding: 10px;
+    background: #333;
+    border-radius: 5px;
+    border: 1px solid #444;
+}
+
+.resonance-zero-srp.sheet .attributes-section,
+.resonance-zero-srp.sheet .health-strain-section,
+.resonance-zero-srp.sheet .resonances-section,
+.resonance-zero-srp.sheet .skills-section,
+.resonance-zero-srp.sheet .inventory-section {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #4a4a4a;
+    padding-bottom: 10px;
+}
+
+.resonance-zero-srp.sheet .attributes-section h3,
+.resonance-zero-srp.sheet .health-strain-section h3,
+.resonance-zero-srp.sheet .resonances-section h3,
+.resonance-zero-srp.sheet .skills-section h3,
+.resonance-zero-srp.sheet .inventory-section h3 {
+    color: #007bff; /* Accent color for section titles */
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 1.1em;
+}
+
+.resonance-zero-srp.sheet .attribute-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+}
+
+.resonance-zero-srp.sheet .attribute-group label {
+    margin-bottom: 2px;
+    font-size: 0.9em;
+    color: #bbb;
+}
+
+.resonance-zero-srp.sheet .attribute-group input {
+    width: 60px; /* Smaller input for attribute values */
+    text-align: center;
+}
+
+.resonance-zero-srp.sheet .health-strain-inputs input {
+    width: 80px;
+    text-align: center;
+}
+
+.resonance-zero-srp.sheet .skill-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns of skills */
+    gap: 5px;
+}
+
+.resonance-zero-srp.sheet .skill-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.resonance-zero-srp.sheet .skill-item label {
+    margin-bottom: 0; /* Override default label margin */
+    display: inline;
+}
+
+.resonance-zero-srp.sheet .resonance-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+/* Item sheet specific styles */
+.resonance-zero-srp.sheet.item .main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.resonance-zero-srp.sheet .editor-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.resonance-zero-srp.sheet .editor {
+    flex-grow: 1;
+    border: 1px solid #5a5a5a;
+    border-radius: 3px;
+    background: #3b3b3b;
+    overflow: hidden; /* Prevent text editor from breaking layout */
+}
+
+/* Foundry rich text editor integration */
+.resonance-zero-srp.sheet .editor .ProseMirror {
+    height: 100%;
+    min-height: 150px; /* Ensure editor has a minimum height */
+    padding: 10px;
+    background: #3b3b3b;
+    color: #f0f0f0;
+}
+
+.resonance-zero-srp.sheet .editor .editor-content {
+    background: #3b3b3b;
+}
+
+/* For image inputs */
+.resonance-zero-srp.sheet .profile-img {
+    border: 1px solid #5a5a5a;
+    border-radius: 5px;
+    max-width: 96px;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.resonance-zero-srp.sheet .items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.resonance-zero-srp.sheet .items-list .item-header {
+    font-weight: bold;
+    border-bottom: 1px solid #4a4a4a;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.resonance-zero-srp.sheet .items-list .item {
+    padding: 3px 0;
+    align-items: center;
+}
+
+.resonance-zero-srp.sheet .items-list .item-name {
+    flex: 3;
+    gap: 5px;
+}
+
+.resonance-zero-srp.sheet .items-list .item-img {
+    flex: 0 0 24px;
+    height: 24px;
+    margin-right: 5px;
+    border: none;
+}
+
+.resonance-zero-srp.sheet .items-list .item-quantity {
+    flex: 0 0 50px;
+    text-align: center;
+}
+
+.resonance-zero-srp.sheet .items-list .item-controls {
+    flex: 0 0 70px;
+    text-align: right;
+}
+
+.resonance-zero-srp.sheet .item-control {
+    color: #007bff;
+    cursor: pointer;
+    margin-left: 5px;
+}
+.resonance-zero-srp.sheet .item-control:hover {
+    color: #fff;
+}
+
+.resonance-zero-srp.sheet button.item-create {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+.resonance-zero-srp.sheet button.item-create:hover {
+    background-color: #218838;
+}
+
+/* General sheet styles */
+.resonance-zero-srp.sheet.actor {
+    font-family: "Arial", sans-serif;
+}
+
+.resonance-zero-srp.sheet.actor .sheet-header {
+    align-items: center;
+    padding: 10px;
+    background: #eee;
+    border-bottom: 1px solid #ccc;
+}
+
+.resonance-zero-srp.sheet.actor .profile-img {
+    flex: 0 0 100px;
+    height: 100px;
+    margin-right: 10px;
+    border: 2px solid #555;
+}
+
+.resonance-zero-srp.sheet.actor .header-details {
+    flex: 1;
+    flex-direction: column;
+}
+
+.resonance-zero-srp.sheet.actor .charname {
+    margin-bottom: 5px;
+    font-size: 1.5em;
+}
+
+.resonance-zero-srp.sheet.actor .charname input {
+    border: none;
+    background: transparent;
+    font-size: 1em;
+    width: 100%;
+    color: #333;
+}
+
+.resonance-zero-srp.sheet.actor .attributes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 10px;
+}
+
+.resonance-zero-srp.sheet.actor .attributes-list li {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.resonance-zero-srp.sheet.actor .attributes-list input {
+    width: 50px;
+    text-align: center;
+}
+
+.resonance-zero-srp.sheet.actor .sheet-body {
+    padding: 10px;
+    flex: 1;
+    display: flex; /* Ensure flex behavior */
+}
+
+.resonance-zero-srp.sheet.actor .sidebar {
+    flex: 0 0 200px; /* Adjust width as needed */
+    margin-right: 10px;
+    border-right: 1px solid #ccc;
+    padding-right: 10px;
+}
+
+.resonance-zero-srp.sheet.actor .content {
+    flex: 1;
+}
+
+.resonance-zero-srp.sheet.actor .description-section h2 {
+    margin-top: 0;
+}
+
+.resonance-zero-srp.sheet.actor .description-section textarea {
+    width: 100%;
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Basic tab styling - you'll need more for actual tabs */
+.resonance-zero-srp.sheet .tab {
+    display: block; /* Default for single tab setup */
+}

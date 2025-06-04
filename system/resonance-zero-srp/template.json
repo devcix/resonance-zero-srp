@@ -1,0 +1,62 @@
+{
+  "Actor": {
+    "types": ["character", "npc", "monster", "creature"],
+    "templates": {
+      "base": {
+        "description": ""
+      }
+    },
+    "character": {
+      "templates": ["base"],
+      "attributes": {
+        "health": {
+          "value": 10,
+          "min": 0,
+          "max": 10
+        }
+      }
+    }, 
+    "npc": {
+      "templates": ["base"],
+      "attributes": {
+        "health": {
+          "value": 10,
+          "min": 0,
+          "max": 10
+        }
+      }
+    },
+    "monster": {
+      "templates": ["base"],
+      "attributes": {
+        "health": {
+          "value": 10,
+          "min": 0,
+          "max": 10
+        }
+      }
+    },
+    "creature": {
+      "templates": ["base"],
+      "attributes": {
+        "health": {
+          "value": 10,
+          "min": 0,
+          "max": 10
+        }
+      }
+    }
+  },
+  "Item": {
+    "types": ["item"],
+    "templates": {
+      "base": {
+        "description": ""
+      }
+    },
+    "item": {
+      "templates": ["base"],
+      "quantity": 1
+    }
+  }
+}
