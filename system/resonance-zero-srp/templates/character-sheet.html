@@ -1,38 +1,104 @@
-<form class="{{cssClass}} flexcol" autocomplete="off">
-    {{!-- Sheet Header --}}
-    <header class="sheet-header flexrow">
-        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" alt="Profile Image"/>
-        <div class="header-details flexrow">
-            <h1 class="charname">
-                <input name="name" type="text" value="{{actor.name}}" placeholder="Name"/>
-            </h1>
+<form class="{{cssClass}}" autocomplete="off">
+  {{!-- Sheet Header --}}
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+    <div class="header-details">
+      <h1 class="charname">
+        <input name="name" type="text" value="{{actor.name}}" placeholder="Name" />
+      </h1>
+    </div>
+  </header>
 
-            {{!-- Attributes --}}
-            <ul class="attributes-list flexrow">
-                <li>
-                    <label class="attribute-label">Health</label>
-                    <input name="system.attributes.health.value" type="number" value="{{actor.system.attributes.health.value}}" data-dtype="Number"/>
-                    / <input name="system.attributes.health.max" type="number" value="{{actor.system.attributes.health.max}}" data-dtype="Number"/>
-                </li>
-            </ul>
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+    <div class="attributes-section">
+      <h2>Attributes</h2>
+      <div class="attributes-grid">
+        <div class="attribute-box">
+          <label for="physical">Physical (Clubs)</label>
+          <input type="number" name="system.attributes.physical.value" value="{{system.attributes.physical.value}}" data-dtype="Number" min="1" max="4" />
         </div>
-    </header>
+        <div class="attribute-box">
+          <label for="social">Social (Hearts)</label>
+          <input type="number" name="system.attributes.social.value" value="{{system.attributes.social.value}}" data-dtype="Number" min="1" max="4" />
+        </div>
+        <div class="attribute-box">
+          <label for="spiritual">Spiritual (Diamonds)</label>
+          <input type="number" name="system.attributes.spiritual.value" value="{{system.attributes.spiritual.value}}" data-dtype="Number" min="1" max="4" />
+        </div>
+        <div class="attribute-box">
+          <label for="intellectual">Intellectual (Spades)</label>
+          <input type="number" name="system.attributes.intellectual.value" value="{{system.attributes.intellectual.value}}" data-dtype="Number" min="1" max="4" />
+        </div>
+      </div>
+    </div>
 
-    {{!-- Sheet Body --}}
-    <section class="sheet-body flexrow">
-        <div class="sidebar flexcol">
-            <div class="description-section">
-                <h2>Description</h2>
-                <textarea name="system.description" rows="10">{{actor.system.description}}</textarea>
-            </div>
+    <div class="health-section">
+      <h2>Health</h2>
+      <div class="health-bar-container">
+        <input type="number" name="system.attributes.health.value" value="{{system.attributes.health.value}}" data-dtype="Number" class="health-input" />
+        /
+        <input type="number" name="system.attributes.health.max" value="{{system.attributes.health.max}}" data-dtype="Number" class="health-input" />
+        <div class="health-bar" style="width: {{healthBarWidth}};"></div>
+        <div class="health-controls">
+          <button type="button" class="health-control-button" data-action="decreaseHealth">-</button>
+          <button type="button" class="health-control-button" data-action="increaseHealth">+</button>
         </div>
+      </div>
+    </div>
 
-        <div class="content flexcol">
-            {{!-- Add more tabs/sections here later --}}
-            <div class="tab" data-group="main" data-tab="description">
-                <h3>Abilities</h3>
-                <p>This is where you'd list abilities.</p>
-            </div>
+    <div class="resonance-section">
+      <h2>Resonance</h2>
+      <div class="resonance-bar-container">
+        <label for="resonance-rank">Rank</label>
+        <input type="number" name="system.resources.resonance.rank" value="{{system.resources.resonance.rank}}" data-dtype="Number" class="resonance-input-rank" min="0" />
+        <span class="separator">| Points: </span>
+        <input type="number" name="system.resources.resonance.value" value="{{system.resources.resonance.value}}" data-dtype="Number" class="resonance-input" />
+        /
+        <input type="number" name="system.resources.resonance.max" value="{{system.resources.resonance.max}}" data-dtype="Number" class="resonance-input" />
+        <div class="resonance-bar" style="width: {{resonanceBarWidth}};"></div>
+        <div class="resonance-controls">
+          <button type="button" class="resonance-control-button" data-action="decreaseResonance">-</button>
+          <button type="button" class="resonance-control-button" data-action="increaseResonance">+</button>
         </div>
-    </section>
+      </div>
+    </div>
+
+    <div class="skill-points-section">
+      <h2>Skill Points</h2>
+      <div class="skill-points-bar-container">
+        <input type="number" name="system.resources.skillPoints.value" value="{{system.resources.skillPoints.value}}" data-dtype="Number" class="skill-points-input" />
+        /
+        <input type="number" name="system.resources.skillPoints.max" value="{{system.resources.skillPoints.max}}" data-dtype="Number" class="skill-points-input" />
+        <div class="skill-points-bar" style="width: {{skillPointsBarWidth}};"></div>
+        <div class="skill-points-controls">
+          <button type="button" class="skill-points-control-button" data-action="decreaseSkillPoints">-</button>
+          <button type="button" class="skill-points-control-button" data-action="increaseSkillPoints">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="fate-section">
+      <h2>Fate Card</h2>
+      <div class="fate-details">
+        <div class="fate-property">
+          <label>Rank:</label>
+          <input type="text" name="system.fate.cardRank" value="{{system.fate.cardRank}}" placeholder="e.g., 2-5, J, A" />
+        </div>
+        <div class="fate-property">
+          <label>Suit:</label>
+          <input type="text" name="system.fate.cardSuit" value="{{system.fate.cardSuit}}" placeholder="e.g., Clubs" />
+        </div>
+        <div class="fate-state {{#if system.fate.isFlippedToNegative}}fate-negative{{else}}fate-positive{{/if}}">
+          Current Fate: {{#if system.fate.isFlippedToNegative}}Negative{{else}}Positive{{/if}}
+        </div>
+        <button type="button" class="fate-flip-button" data-action="flipFate">Flip Fate Card</button>
+      </div>
+    </div>
+
+    <div class="description-section">
+      <h2>Description</h2>
+      {{editor enrichedDescription target="system.description" button=true owner=owner editable=editable}}
+    </div>
+  </section>
 </form>
