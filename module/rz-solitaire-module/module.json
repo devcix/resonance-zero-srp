@@ -5,13 +5,16 @@
   "version": "1.0.0",
   "compatibility": {
     "minimum": "11.307",
-    "verified": "13.342"
+    "verified": "13.344"
   },
   "authors": [
     {
-      "name": "Your Name Here"
+      "name": "Cixtian Trybe"
     }
   ],
+  "manifest": "https://github.com/devcix/resonance-zero-srp/releases/latest/module.json",
+  "download": "https://github.com/devcix/resonance-zero-srp/releases/latest.zip",
+  "readme": "https://github.com/devcix/resonance-zero-srp/blob/main/README.md",
   "esmodules": ["rz-solitaire.mjs"],
   "styles": ["rz-solitaire.css"],
   "relationships": {

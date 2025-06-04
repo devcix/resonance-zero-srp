@@ -1,17 +1,19 @@
 {
   "id": "resonance-zero-srp",
   "title": "Resonance Zero SRP",
+  "description": "A custom system for Resonance Zero SRP, designed for immersive storytelling.",
   "version": "1.0.0",
   "compatibility": {
     "minimum": "11.307",
-    "verified": "13.342"
+    "verified": "13.344"
   },
   "authors": [
     {
       "name": "Cixtian Trybe"
     }
   ],
-
+  "manifest": "https://github.com/devcix/resonance-zero-srp/releases/latest/system.json",
+  "download": "https://github.com/devcix/resonance-zero-srp/releases/latest.zip",
   "esmodules": ["resonance-zero-srp.mjs"],
   "styles": ["resonance-zero-srp.css"],
   "packs": [

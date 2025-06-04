@@ -18,31 +18,70 @@ export class ResonanceZeroSrpActorSheet extends foundry.appv1.sheets.ActorSheet 
     }
 
     /** @override */
-    async getData() {
-        const data = await super.getData(); // Use await with super.getData()
+async getData() {
+    const data = await super.getData();
+    data.system = data.actor.system || {};
 
-        // Make system data available directly for easier access in template
-        data.system = data.actor.system;
+    // Ensure attributes, pools, and resources exist
+    data.system.attributes = data.system.attributes || {};
 
-        // Calculate Health Bar Width
-        const health = data.actor.system.attributes.health;
-        data.healthBarWidth = `${(health.value / health.max) * 100}%`;
+    // Ensure all attributes exist
+    const defaultAttributes = {
+        physical: { value: 1, min: 1, max: 4, card: "clubs" },
+        social: { value: 1, min: 1, max: 4, card: "hearts" },
+        spiritual: { value: 1, min: 1, max: 4, card: "diamonds" },
+        intellect: { value: 1, min: 1, max: 4, card: "spades" }
+    };
 
-        // Calculate Resonance Bar Width
-        const resonance = data.actor.system.resources.resonance;
-        data.resonanceBarWidth = `${(resonance.value / Math.max(1, resonance.max)) * 100}%`; // Math.max(1, ...) to prevent division by zero
+    data.system.attributes = foundry.utils.mergeObject(defaultAttributes, data.system.attributes);
 
-        // Calculate Skill Points Bar Width
-        const skillPoints = data.actor.system.resources.skillPoints;
-        data.skillPointsBarWidth = `${(skillPoints.value / Math.max(1, skillPoints.max)) * 100}%`; // Math.max(1, ...) to prevent division by zero
 
-        // Add roll data for convenience (keeping this from your original code, though unused for now)
-        data.rollData = {}; 
+    data.system.pools = data.system.pools || {};
+    data.system.resources = data.system.resources || {};
 
-        // console.log("Data sent to character-sheet.html:", data); // Uncomment for debugging
+    // Ensure skills exist and initialize nested objects
+    const defaultSkills = {
+        social: { negotiation: 0, deception: 0, leadership: 0, empathy: 0, persuasion: 0 },
+        physical: { endurance: 0, acrobatics: 0, combat: { blade: 0, unarmed: 0, ranged: 0 }, evasion: 0, stealth: 0 },
+        spiritual: { resilience: 0, meditation: 0, mysticism: { ritualKnowledge: 0, channeling: 0 }, dreamwalking: 0 },
+        intellect: { research: 0, deduction: 0, engineering: 0, translation: 0, tacticalAnalysis: 0 }
+    };
 
-        return data;
-    }
+    // Ensure all skill categories exist before merging
+    data.system.skills = data.system.skills || {};
+    Object.keys(defaultSkills).forEach(category => {
+        data.system.skills[category] = data.system.skills[category] || {};
+        Object.keys(defaultSkills[category]).forEach(skill => {
+            if (typeof defaultSkills[category][skill] === "object") {
+                data.system.skills[category][skill] = foundry.utils.mergeObject(defaultSkills[category][skill], data.system.skills[category][skill] || {});
+            } else {
+                data.system.skills[category][skill] = data.system.skills[category][skill] ?? defaultSkills[category][skill];
+            }
+        });
+    });
+
+    // Ensure resonances exist
+    const defaultResonances = {
+        echoOfPossibility: 0, realityAnchor: 0, phaseDrift: 0, voidResonance: 0,
+        fatebinder: 0, fracturedReflex: 0, mnemonicTransference: 0, whisperOfThePast: 0,
+        chronoFlux: 0, confluxAdaptation: 0
+    };
+    data.system.resonances = foundry.utils.mergeObject(defaultResonances, data.system.resonances || {});
+
+    // Initialize health to prevent undefined errors
+    data.system.attributes.health = data.system.attributes.health || { value: 4, max: 4 };
+
+    // Initialize resonance and skill points safely
+    data.system.resources.resonance = data.system.resources.resonance || { value: 0, max: 0 };
+    data.system.resources.skillPoints = data.system.resources.skillPoints || { value: 0, max: 0 };
+
+    // Calculate bar widths safely to avoid division by zero
+    data.healthBarWidth = `${(data.system.attributes.health.value / Math.max(1, data.system.attributes.health.max)) * 100}%`;
+    data.resonanceBarWidth = `${(data.system.resources.resonance.value / Math.max(1, data.system.resources.resonance.max)) * 100}%`;
+    data.skillPointsBarWidth = `${(data.system.resources.skillPoints.value / Math.max(1, data.system.resources.skillPoints.max)) * 100}%`;
+
+    return data;
+}
 
     /** @override */
     activateListeners(html) {
@@ -309,6 +348,16 @@ Hooks.once("init", async function() {
     Handlebars.registerHelper('add', function(value1, value2) {
         return value1 + value2;
     });
+
+    // Register Handlebars helpers
+    Handlebars.registerHelper("range", function(start, end) {
+        let result = [];
+        for (let i = start; i <= end; i++) {
+            result.push(i);
+        }
+        return result;
+    });
+
 
     console.log('Resonance Zero SRP | System initialization complete.');
 });

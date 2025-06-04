@@ -3,85 +3,95 @@
     "types": ["character", "npc", "monster", "creature"],
     "templates": {
       "base": {
-        "description": ""
-      }
-    },
-    "character": {
-      "templates": ["base"],
-      "attributes": {
-        "health": {
-          "value": 10,
-          "min": 0,
-          "max": 10
+        "profile": {
+          "name": "",
+          "playerName": "",
+          "image": "",
+          "concept": "",
+          "background": ""
         },
-        "physical": {
-          "value": 1,
-          "min": 1,
-          "max": 4
+        "attributes": {
+          "physical": { "value": 1, "min": 1, "max": 4, "card": "clubs" },
+          "social": { "value": 1, "min": 1, "max": 4, "card": "hearts" },
+          "spiritual": { "value": 1, "min": 1, "max": 4, "card": "diamonds" },
+          "intellect": { "value": 1, "min": 1, "max": 4, "card": "spades" }
         },
-        "social": {
-          "value": 1,
-          "min": 1,
-          "max": 4
+        "skills": {
+          "social": {
+            "negotiation": 0,
+            "deception": 0,
+            "leadership": 0,
+            "empathy": 0,
+            "persuasion": 0
+          },
+          "physical": {
+            "endurance": 0,
+            "acrobatics": 0,
+            "combat": {
+              "blade": 0,
+              "unarmed": 0,
+              "ranged": 0
+            },
+            "evasion": 0,
+            "stealth": 0
+          },
+          "spiritual": {
+            "resilience": 0,
+            "meditation": 0,
+            "mysticism": {
+              "ritualKnowledge": 0,
+              "channeling": 0
+            },
+            "dreamwalking": 0
+          },
+          "intellect": {
+            "research": 0,
+            "deduction": 0,
+            "engineering": 0,
+            "translation": 0,
+            "tacticalAnalysis": 0
+          }
         },
-        "spiritual": {
-          "value": 1,
-          "min": 1,
-          "max": 4
+        "resonances": {
+          "echoOfPossibility": 0,
+          "realityAnchor": 0,
+          "phaseDrift": 0,
+          "voidResonance": 0,
+          "fatebinder": 0,
+          "fracturedReflex": 0,
+          "mnemonicTransference": 0,
+          "whisperOfThePast": 0,
+          "chronoFlux": 0,
+          "confluxAdaptation": 0
         },
-        "intellectual": {
-          "value": 1,
-          "min": 1,
-          "max": 4
+        "pools": {
+          "stress": { "value": 0, "max": 10 },
+          "health": { "value": 4, "max": 4 },
+          "experience": { "value": 0, "max": null }
+        },
+        "sundries": {
+          "gear": [],
+          "armor": [],
+          "weapons": [],
+          "artifacts": []
+        },
+        "fate": {
+          "isFlippedToNegative": false,
+          "cardRank": "2-5",
+          "cardSuit": "Clubs"
         }
       },
-      "resources": {
-        "resonance": {
-          "value": 0,
-          "min": 0,
-          "max": 0,
-          "rank": 0
-        },
-        "skillPoints": {
-          "value": 0,
-          "min": 0,
-          "max": 0
-        }
+      "character": {
+        "templates": ["base"]
       },
-      "fate": {
-        "isFlippedToNegative": false,
-        "cardRank": "2-5",
-        "cardSuit": "Clubs"
-      }
-    },
-    "npc": {
-      "templates": ["base"],
-      "attributes": {
-        "health": {
-          "value": 10,
-          "min": 0,
-          "max": 10
-        }
-      }
-    },
-    "monster": {
-      "templates": ["base"],
-      "attributes": {
-        "health": {
-          "value": 10,
-          "min": 0,
-          "max": 10
-        }
-      }
-    },
-    "creature": {
-      "templates": ["base"],
-      "attributes": {
-        "health": {
-          "value": 10,
-          "min": 0,
-          "max": 10
-        }
+      "npc": {
+        "templates": ["base"]
+      },
+      "monster": {
+        "templates": ["base"]
+      },
+      "creature": {
+        "templates": ["base"]
       }
     }
   },
