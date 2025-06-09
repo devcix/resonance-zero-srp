@@ -1,0 +1,25 @@
+<form class="{{cssClass}}" autocomplete="off">
+    {{!-- Sheet Header --}}
+    <header class="sheet-header">
+        <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+        <div class="header-details">
+            <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Character Name"/></h1>
+        </div>
+    </header>
+
+    {{!-- Wizard Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+        <a class="item wizard-navigation-button" data-action="prevStep">Previous</a>
+        <a class="item wizard-navigation-button" data-action="nextStep">Next</a>
+        <a class="item wizard-navigation-button" data-action="finishWizard">Finish</a>
+    </nav>
+
+    {{!-- Wizard Body --}}
+    <section class="sheet-body">
+        <div class="wizard-content">
+            {{!-- This is the critical line to include your step partials --}}
+            {{> (lookup . 'currentStepPartial') this }}
+            {{!-- The 'this' above passes the current context (including data.actor, data.system etc.) to the partial. --}}
+        </div>
+    </section>
+</form>

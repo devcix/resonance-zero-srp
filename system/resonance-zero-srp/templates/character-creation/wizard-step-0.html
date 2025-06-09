@@ -1,0 +1,77 @@
+<div class="wizard-step profile-step">
+    <h1>Character Profile</h1>
+    <p>Welcome to character creation for Resonance Zero SRP! Please fill out the following information to define your character's core identity. This information will influence your journey and interactions within the game world.</p>
+
+    <div class="form-group">
+        <label for="concept">Concept</label>
+        <input type="text" name="system.profile.concept" value="{{system.profile.concept}}" placeholder="e.g., Exiled Tech-Priest, Wandering Fatebinder" data-dtype="String"/>
+        <p class="hint">A short descriptive phrase of who the character is.</p>
+    </div>
+
+    <div class="form-group">
+        <label for="background">Background</label>
+        <textarea name="system.profile.background" placeholder="Describe your character's history and how they came to be where they are now." data-dtype="String">{{system.profile.background}}</textarea>
+        <p class="hint">A lengthy text description of who the character is.</p>
+    </div>
+
+    <div class="form-group">
+        <label for="motivation">Motivation</label>
+        <input type="text" name="system.profile.motivation" value="{{system.profile.motivation}}" placeholder="e.g., Seek forgotten knowledge, Protect the innocent" data-dtype="String"/>
+        <p class="hint">A short description about what the character's motivation is.</p>
+    </div>
+
+    <div class="form-group">
+        <label for="trouble">Trouble</label>
+        <input type="text" name="system.profile.trouble" value="{{system.profile.trouble}}" placeholder="This will be filled later based on your Fate Card." readonly disabled data-dtype="String"/>
+        <p class="hint">This will be empty until the character chooses the card for their Sagacity (Fate Card).</p>
+    </div>
+
+    <div class="wizard-navigation">
+        <button type="button" class="wizard-navigation-button" data-action="nextStep">Begin Character Creation Process &raquo;</button>
+    </div>
+</div>
+
+<style>
+    /* Basic styling for form elements within the wizard */
+    .profile-step .form-group {
+        margin-bottom: 15px;
+    }
+    .profile-step label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .profile-step input[type="text"],
+    .profile-step textarea {
+        width: calc(100% - 10px);
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .profile-step textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+    .profile-step .hint {
+        font-size: 0.8em;
+        color: #777;
+        margin-top: 5px;
+    }
+    .profile-step .wizard-navigation {
+        text-align: right;
+        margin-top: 20px;
+    }
+    .profile-step .wizard-navigation-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.1em;
+    }
+    .profile-step .wizard-navigation-button:hover {
+        background-color: #45a049;
+    }
+</style>

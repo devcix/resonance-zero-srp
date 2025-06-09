@@ -4,85 +4,138 @@
     "templates": {
       "base": {
         "profile": {
-          "name": "",
-          "playerName": "",
-          "image": "",
-          "concept": "",
-          "background": ""
+          "concept": { "type": "String", "value": "" },
+          "background": { "type": "String", "value": "" },
+          "motivation": { "type": "String", "value": "" },
+          "trouble": { "type": "String", "value": "" }
         },
+        "health": { "value": 4, "max": 4, "type": "Number" },
+        "strain": { "value": 0, "max": 10, "type": "Number" },
+        "fragmented": { "type": "Boolean", "value": false },
         "attributes": {
-          "physical": { "value": 1, "min": 1, "max": 4, "card": "clubs" },
-          "social": { "value": 1, "min": 1, "max": 4, "card": "hearts" },
-          "spiritual": { "value": 1, "min": 1, "max": 4, "card": "diamonds" },
-          "intellect": { "value": 1, "min": 1, "max": 4, "card": "spades" }
+          "physical": { "rank": { "type": "Number", "value": 1 }, "min": { "type": "Number", "value": 1 }, "max": { "type": "Number", "value": 4 }, "suit": { "type": "String", "value": "clubs" } },
+          "social": { "rank": { "type": "Number", "value": 1 }, "min": { "type": "Number", "value": 1 }, "max": { "type": "Number", "value": 4 }, "suit": { "type": "String", "value": "hearts" } },
+          "spiritual": { "rank": { "type": "Number", "value": 1 }, "min": { "type": "Number", "value": 1 }, "max": { "type": "Number", "value": 4 }, "suit": { "type": "String", "value": "diamonds" } },
+          "intellectual": { "rank": { "type": "Number", "value": 1 }, "min": { "type": "Number", "value": 1 }, "max": { "type": "Number", "value": 4 }, "suit": { "type": "String", "value": "spades" } }
         },
         "skills": {
           "social": {
-            "negotiation": 0,
-            "deception": 0,
-            "leadership": 0,
-            "empathy": 0,
-            "persuasion": 0
+            "negotiation": { "type": "Number", "value": 0 }, "deception": { "type": "Number", "value": 0 }, "leadership": { "type": "Number", "value": 0 }, "empathy": { "type": "Number", "value": 0 }, "persuasion": { "type": "Number", "value": 0 }
           },
           "physical": {
-            "endurance": 0,
-            "acrobatics": 0,
-            "combat": {
-              "blade": 0,
-              "unarmed": 0,
-              "ranged": 0
-            },
-            "evasion": 0,
-            "stealth": 0
+            "endurance": { "type": "Number", "value": 0 }, "acrobatics": { "type": "Number", "value": 0 },
+            "combat": { "blade": { "type": "Number", "value": 0 }, "unarmed": { "type": "Number", "value": 0 }, "ranged": { "type": "Number", "value": 0 } },
+            "evasion": { "type": "Number", "value": 0 }, "stealth": { "type": "Number", "value": 0 }
           },
           "spiritual": {
-            "resilience": 0,
-            "meditation": 0,
-            "mysticism": {
-              "ritualKnowledge": 0,
-              "channeling": 0
-            },
-            "dreamwalking": 0
+            "resilience": { "type": "Number", "value": 0 }, "meditation": { "type": "Number", "value": 0 },
+            "mysticism": { "ritualKnowledge": { "type": "Number", "value": 0 }, "channeling": { "type": "Number", "value": 0 } },
+            "dreamwalking": { "type": "Number", "value": 0 }
           },
-          "intellect": {
-            "research": 0,
-            "deduction": 0,
-            "engineering": 0,
-            "translation": 0,
-            "tacticalAnalysis": 0
+          "intellectual": {
+            "research": { "type": "Number", "value": 0 }, "deduction": { "type": "Number", "value": 0 }, "engineering": { "type": "Number", "value": 0 }, "translation": { "type": "Number", "value": 0 }, "tacticalAnalysis": { "type": "Number", "value": 0 }
           }
         },
         "resonances": {
-          "echoOfPossibility": 0,
-          "realityAnchor": 0,
-          "phaseDrift": 0,
-          "voidResonance": 0,
-          "fatebinder": 0,
-          "fracturedReflex": 0,
-          "mnemonicTransference": 0,
-          "whisperOfThePast": 0,
-          "chronoFlux": 0,
-          "confluxAdaptation": 0
+          "echoOfPossibility": { "type": "Boolean", "value": false }, "realityAnchor": { "type": "Boolean", "value": false }, "phaseDrift": { "type": "Boolean", "value": false }, "voidResonance": { "type": "Boolean", "value": false }, "fatebinder": { "type": "Boolean", "value": false },
+          "fracturedReflex": { "type": "Boolean", "value": false }, "mnemonicTransference": { "type": "Boolean", "value": false }, "whisperOfThePast": { "type": "Boolean", "value": false }, "chronoFlux": { "type": "Boolean", "value": false },
+          "confluxAdaptation": { "type": "Boolean", "value": false }, "uniqueResonancePower": { "type": "String", "value": "" }
         },
         "pools": {
-          "stress": { "value": 0, "max": 10 },
-          "health": { "value": 4, "max": 4 },
-          "experience": { "value": 0, "max": null }
+          "stress": { "value": 0, "max": 10, "type": "Number" },
+          "experience": { "value": 0, "max": null, "type": "Number" }
         },
         "sundries": {
-          "gear": [],
-          "armor": [],
-          "weapons": [],
-          "artifacts": []
+          "gear": { "type": "Array", "value": [], "model": { "name": { "type": "String" } } },
+          "armor": { "type": "Array", "value": [], "model": { "name": { "type": "String" } } },
+          "weapons": { "type": "Array", "value": [], "model": { "name": { "type": "String" } } },
+          "artifacts": { "type": "Array", "value": [], "model": { "name": { "type": "String" } } }
         },
         "fate": {
-          "isFlippedToNegative": false,
-          "cardRank": "2-5",
-          "cardSuit": "Clubs"
-        }
+          "isFlippedToNegative": { "type": "Boolean", "value": false }, "cardRank": { "type": "String", "value": "" }, "cardSuit": { "type": "String", "value": "" }
+        },
+        "relationships": { "type": "Array", "value": [], "model": { "name": { "type": "String" }, "relation": { "type": "String" } } },
+        "description": { "type": "String", "value": "" },
+        "generalNotes": { "type": "String", "value": "" }
       },
       "character": {
-        "templates": ["base"]
+        "templates": ["base"],
+        "system": {
+          "_characterCreation": {
+            "inProgress": { "type": "Boolean", "value": true },
+            "currentStep": { "type": "String", "value": "profile" },
+            "completedSteps": {
+              "profile": { "type": "Boolean", "value": false },
+              "overview": { "type": "Boolean", "value": false },
+              "cardAllocation": { "type": "Boolean", "value": false },
+              "attributesDisplay": { "type": "Boolean", "value": false },
+              "skillAllocation": { "type": "Boolean", "value": false },
+              "resonanceAllocation": { "type": "Boolean", "value": false },
+              "gearAllocation": { "type": "Boolean", "value": false },
+              "fateCardDisplay": { "type": "Boolean", "value": false }
+            },
+            "profile": {
+              "concept": { "type": "String", "value": "" },
+              "background": { "type": "String", "value": "" },
+              "motivation": { "type": "String", "value": "" },
+              "trouble": { "type": "String", "value": "" }
+            },
+            "drawnCards": {
+              "type": "Array",
+              "value": [],
+              "model": { "suit": { "type": "String" }, "rank": { "type": "String" } }
+            },
+            "allocatedCards": { 
+              "attributes": {
+                "type": "Array",
+                "value": [],
+                "model": { "suit": { "type": "String" }, "rank": { "type": "String" } }
+              },
+              "skills": {
+                "type": "Array",
+                "value": [],
+                "model": { "suit": { "type": "String" }, "rank": { "type": "String" } }
+              },
+              "resonances": {
+                "type": "Array",
+                "value": [],
+                "model": { "suit": { "type": "String" }, "rank": { "type": "String" } }
+              },
+              "gear": {
+                "type": "Array",
+                "value": [],
+                "model": { "suit": { "type": "String" }, "rank": { "type": "String" } }
+              },
+              "fate": {
+                "type": "Array",
+                "value": [],
+                "model": { "suit": { "type": "String" }, "rank": { "type": "String" } }
+              }
+            },
+            "pointPools": {
+              "skill": { "type": "Number", "value": 0 }, "resonance": { "type": "Number", "value": 0 }, "gear": { "type": "Number", "value": 0 }
+            },
+            "skillAllocations": {
+              "social": { "negotiation": { "type": "Number", "value": 0 }, "deception": { "type": "Number", "value": 0 }, "leadership": { "type": "Number", "value": 0 }, "empathy": { "type": "Number", "value": 0 }, "persuasion": { "type": "Number", "value": 0 } },
+              "physical": { "endurance": { "type": "Number", "value": 0 }, "acrobatics": { "type": "Number", "value": 0 },
+                "combat": { "blade": { "type": "Number", "value": 0 }, "unarmed": { "type": "Number", "value": 0 }, "ranged": { "type": "Number", "value": 0 } },
+                "evasion": { "type": "Number", "value": 0 }, "stealth": { "type": "Number", "value": 0 }
+              },
+              "spiritual": { "resilience": { "type": "Number", "value": 0 }, "meditation": { "type": "Number", "value": 0 },
+                "mysticism": { "ritualKnowledge": { "type": "Number", "value": 0 }, "channeling": { "type": "Number", "value": 0 } },
+                "dreamwalking": { "type": "Number", "value": 0 }
+              },
+              "intellectual": { "research": { "type": "Number", "value": 0 }, "deduction": { "type": "Number", "value": 0 }, "engineering": { "type": "Number", "value": 0 }, "translation": { "type": "Number", "value": 0 }, "tacticalAnalysis": { "type": "Number", "value": 0 }
+              }
+            },
+            "resonanceAllocations": {
+              "echoOfPossibility": { "type": "Boolean", "value": false }, "realityAnchor": { "type": "Boolean", "value": false }, "phaseDrift": { "type": "Boolean", "value": false }, "voidResonance": { "type": "Boolean", "value": false }, "fatebinder": { "type": "Boolean", "value": false },
+              "fracturedReflex": { "type": "Boolean", "value": false }, "mnemonicTransference": { "type": "Boolean", "value": false }, "whisperOfThePast": { "type": "Boolean", "value": false }, "chronoFlux": { "type": "Boolean", "value": false },
+              "confluxAdaptation": { "type": "Boolean", "value": false }, "uniqueResonancePower": { "type": "String", "value": "" }
+            },
+            "gearAllocations": { "type": "Array", "value": [], "model": { "name": { "type": "String" }, "type": { "type": "String" } } }
+          }
+        }
       },
       "npc": {
         "templates": ["base"]
@@ -99,12 +152,12 @@
     "types": ["item"],
     "templates": {
       "base": {
-        "description": ""
+        "description": { "type": "String", "value": "" }
       }
     },
     "item": {
       "templates": ["base"],
-      "quantity": 1
+      "quantity": { "type": "Number", "value": 1 }
     }
   }
 }

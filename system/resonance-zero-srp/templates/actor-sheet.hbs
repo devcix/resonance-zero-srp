@@ -4,25 +4,64 @@
         <div class="header-details">
             <input name="name" type="text" value="{{actor.name}}" placeholder="Character Name"/>
             <div class="header-info">
-                <input name="system.concept" type="text" value="{{system.concept}}" placeholder="Core Concept"/>
-                <input name="system.motivation" type="text" value="{{system.motivation}}" placeholder="Driving Motivation"/>
-                <input name="system.trouble" type="text" value="{{system.trouble}}" placeholder="Intrinsic Trouble"/>
+                {{!-- Updated paths to system.profile --}}
+                <input name="system.profile.concept" type="text" value="{{system.profile.concept}}" placeholder="Core Concept"/>
+                <input name="system.profile.motivation" type="text" value="{{system.profile.motivation}}" placeholder="Driving Motivation"/>
+                <input name="system.profile.trouble" type="text" value="{{system.profile.trouble}}" placeholder="Intrinsic Trouble"/>
             </div>
         </div>
     </header>
 
+    {{!-- Conditional rendering for Character Creation Wizard --}}
+    {{#if system._characterCreation.inProgress}}
+    <section class="sheet-body character-creation-wizard">
+        <h2>Character Creation Wizard</h2>
+        <div class="wizard-steps-indicator">
+            <span class="{{#if (eq system._characterCreation.currentStepIndex 0)}}active{{/if}}">1. Overview</span>
+            <span class="{{#if (eq system._characterCreation.currentStepIndex 1)}}active{{/if}}">2. Attributes</span>
+            <span class="{{#if (eq system._characterCreation.currentStepIndex 2)}}active{{/if}}">3. Skills</span>
+            <span class="{{#if (eq system._characterCreation.currentStepIndex 3)}}active{{/if}}">4. Resonances</span>
+            <span class="{{#if (eq system._characterCreation.currentStepIndex 4)}}active{{/if}}">5. Gear</span>
+            <span class="{{#if (eq system._characterCreation.currentStepIndex 5)}}active{{/if}}">6. Fate Card</span>
+            <span class="{{#if (eq system._characterCreation.currentStepIndex 6)}}active{{/if}}">7. Review & Finalize</span>
+        </div>
+
+        <div class="wizard-content">
+            {{!-- The content of each wizard step will be rendered dynamically by JavaScript --}}
+            <div id="wizard-step-container">
+                <p>Loading Character Creation Wizard...</p>
+                <p>Ensure your `resonance-zero-srp.mjs` is handling wizard step rendering.</p>
+            </div>
+        </div>
+
+        <footer class="wizard-footer">
+            <button type="button" class="wizard-nav-button prev-step" {{#if (eq system._characterCreation.currentStepIndex 0)}}disabled{{/if}}>
+                <i class="fas fa-chevron-left"></i> Previous
+            </button>
+            <button type="button" class="wizard-nav-button next-step" {{#if (eq system._characterCreation.currentStepIndex 6)}}disabled{{/if}}>
+                Next <i class="fas fa-chevron-right"></i>
+            </button>
+            <button type="button" class="wizard-finalize-button" {{#unless (eq system._characterCreation.currentStepIndex 6)}}disabled{{/unless}}>
+                Finalize Character <i class="fas fa-check"></i>
+            </button>
+        </footer>
+    </section>
+    {{else}}
+    {{!-- Normal Character Sheet (when not in character creation) --}}
     <nav class="sheet-tabs tabs" data-group="primary">
         <a class="item" data-tab="description">Description</a>
         <a class="item" data-tab="attributes">Attributes & Skills</a>
         <a class="item" data-tab="inventory">Inventory & Resonances</a>
         <a class="item" data-tab="notes">Notes & Relationships</a>
+        <a class="item" data-tab="fate">Fate Card</a> {{!-- New tab for Fate --}}
     </nav>
 
     <section class="sheet-body">
         <div class="tab description" data-tab="description">
             <div class="editor-container">
                 <label>Character Description</label>
-                {{editor system.notes target="system.notes" button=true owner=owner editable=editable}}
+                {{!-- Changed target to system.description from system.notes --}}
+                {{editor system.description target="system.description" button=true owner=owner editable=editable}}
             </div>
         </div>
 
@@ -34,55 +73,71 @@
                         <div class="flexrow health-strain-inputs">
                             <div class="form-group">
                                 <label for="healthValue">Health</label>
+                                {{!-- Paths already correct based on template.json moving them out of pools --}}
                                 <input id="healthValue" name="system.health.value" type="number" value="{{system.health.value}}" data-dtype="Number"/> /
                                 <input name="system.health.max" type="number" value="{{system.health.max}}" data-dtype="Number"/>
                             </div>
                             <div class="form-group">
                                 <label for="strainValue">Resonant Strain</label>
+                                {{!-- Path already correct --}}
                                 <input id="strainValue" name="system.strain.value" type="number" value="{{system.strain.value}}" data-dtype="Number"/> /
                                 <input name="system.strain.max" type="number" value="{{system.strain.max}}" data-dtype="Number"/>
                             </div>
                             <div class="form-group">
                                 <label>Fragmented?</label>
+                                {{!-- Path already correct --}}
                                 <input type="checkbox" name="system.fragmented" {{checked system.fragmented}}/>
                             </div>
                         </div>
                     </div>
 
+                    {{!-- New: Stress and Experience pools --}}
+                    <div class="pools-section">
+                        <h3>Resource Pools</h3>
+                        <div class="flexrow pool-inputs">
+                            <div class="form-group">
+                                <label for="stressValue">Stress</label>
+                                <input id="stressValue" name="system.pools.stress.value" type="number" value="{{system.pools.stress.value}}" data-dtype="Number"/> /
+                                <input name="system.pools.stress.max" type="number" value="{{system.pools.stress.max}}" data-dtype="Number"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="experienceValue">Experience</label>
+                                <input id="experienceValue" name="system.pools.experience.value" type="number" value="{{system.pools.experience.value}}" data-dtype="Number"/>
+                                {{!-- Experience has no max in template.json --}}
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="attributes-section">
-                        <h3>Attributes (Type, Suit, Rank)</h3>
+                        <h3>Attributes (Suit, Rank)</h3> {{!-- Updated title --}}
                         <div class="flexrow">
                             {{!-- Physical --}}
                             <div class="flexcol attribute-group">
-                                <h4>Physical ({{attributes.physical.suit}})</h4>
-                                <label for="physicalType">Type</label>
-                                <input type="text" name="system.attributes.physical.type" value="{{attributes.physical.type}}" disabled/>
+                                <h4>Physical ({{system.attributes.physical.suit}})</h4> {{!-- Updated path to system.attributes --}}
+                                {{!-- Removed disabled 'type' input as it's not backed by data in template.json --}}
                                 <label for="physicalRank">Rank</label>
-                                <input id="physicalRank" type="number" name="system.attributes.physical.rank" value="{{attributes.physical.rank}}" data-dtype="Number"/>
+                                <input id="physicalRank" type="number" name="system.attributes.physical.rank" value="{{system.attributes.physical.rank}}" data-dtype="Number" min="1" max="4"/> {{!-- Added min/max, updated path --}}
                             </div>
                             {{!-- Social --}}
                             <div class="flexcol attribute-group">
-                                <h4>Social ({{attributes.social.suit}})</h4>
-                                <label for="socialType">Type</label>
-                                <input type="text" name="system.attributes.social.type" value="{{attributes.social.type}}" disabled/>
+                                <h4>Social ({{system.attributes.social.suit}})</h4> {{!-- Updated path --}}
+                                {{!-- Removed disabled 'type' input --}}
                                 <label for="socialRank">Rank</label>
-                                <input id="socialRank" type="number" name="system.attributes.social.rank" value="{{attributes.social.rank}}" data-dtype="Number"/>
+                                <input id="socialRank" type="number" name="system.attributes.social.rank" value="{{system.attributes.social.rank}}" data-dtype="Number" min="1" max="4"/> {{!-- Added min/max, updated path --}}
                             </div>
                             {{!-- Spiritual --}}
                             <div class="flexcol attribute-group">
-                                <h4>Spiritual ({{attributes.spiritual.suit}})</h4>
-                                <label for="spiritualType">Type</label>
-                                <input type="text" name="system.attributes.spiritual.type" value="{{attributes.spiritual.type}}" disabled/>
+                                <h4>Spiritual ({{system.attributes.spiritual.suit}})</h4> {{!-- Updated path --}}
+                                {{!-- Removed disabled 'type' input --}}
                                 <label for="spiritualRank">Rank</label>
-                                <input id="spiritualRank" type="number" name="system.attributes.spiritual.rank" value="{{attributes.spiritual.rank}}" data-dtype="Number"/>
+                                <input id="spiritualRank" type="number" name="system.attributes.spiritual.rank" value="{{system.attributes.spiritual.rank}}" data-dtype="Number" min="1" max="4"/> {{!-- Added min/max, updated path --}}
                             </div>
                             {{!-- Intellectual --}}
                             <div class="flexcol attribute-group">
-                                <h4>Intellectual ({{attributes.intellectual.suit}})</h4>
-                                <label for="intellectualType">Type</label>
-                                <input type="text" name="system.attributes.intellectual.type" value="{{attributes.intellectual.type}}" disabled/>
+                                <h4>Intellectual ({{system.attributes.intellectual.suit}})</h4> {{!-- Renamed from 'intellect', updated path --}}
+                                {{!-- Removed disabled 'type' input --}}
                                 <label for="intellectualRank">Rank</label>
-                                <input id="intellectualRank" type="number" name="system.attributes.intellectual.rank" value="{{attributes.intellectual.rank}}" data-dtype="Number"/>
+                                <input id="intellectualRank" type="number" name="system.attributes.intellectual.rank" value="{{system.attributes.intellectual.rank}}" data-dtype="Number" min="1" max="4"/> {{!-- Renamed from 'intellect', added min/max, updated path --}}
                             </div>
                         </div>
                     </div>
@@ -91,11 +146,49 @@
                 <div class="sidebar">
                     <div class="skills-section">
                         <h3>Skills</h3>
+                        <p><i>Enter skill ranks (0-5)</i></p>
                         <div class="skill-list">
-                            {{#each allSkills as |skillName|}}
-                            <div class="skill-item">
-                                <input type="checkbox" name="system.skills" data-skill="{{skillName}}" {{checked (includes system.skills skillName)}} class="skill-checkbox"/>
-                                <label>{{skillName}}</label>
+                            {{!-- Refactored to iterate through nested skills based on template.json --}}
+                            {{#each system.skills as |categorySkills categoryName|}}
+                            <div class="skill-category">
+                                {{!-- Using a helper from getData to get readable names, e.g., "social" -> "Social" --}}
+                                <h4>{{lookup @root.skillCategoryLabels categoryName}} Skills</h4>
+                                {{!-- Iterate over immediate skills within the category (non-objects) --}}
+                                {{#each categorySkills as |skillValue skillName|}}
+                                    {{#unless (isObject skillValue)}} {{!-- Helper `isObject` needed in resonance-zero-srp.mjs --}}
+                                    <div class="skill-item">
+                                        {{!-- Using a helper from getData to get readable names, e.g., "negotiation" -> "Negotiation" --}}
+                                        <label for="{{skillName}}">{{lookup @root.skillLabels skillName}}</label>
+                                        <input type="number" name="system.skills.{{categoryName}}.{{skillName}}" value="{{skillValue}}" data-dtype="Number" min="0" max="5"/>
+                                    </div>
+                                    {{/unless}}
+                                {{/each}}
+
+                                {{!-- Handle nested skill categories like 'combat' --}}
+                                {{#if categorySkills.combat}}
+                                <div class="skill-subcategory">
+                                    <h5>Combat Skills</h5>
+                                    {{#each categorySkills.combat as |subSkillValue subSkillName|}}
+                                    <div class="skill-item">
+                                        <label for="{{subSkillName}}">{{lookup @root.skillLabels subSkillName}}</label>
+                                        <input type="number" name="system.skills.{{categoryName}}.combat.{{subSkillName}}" value="{{subSkillValue}}" data-dtype="Number" min="0" max="5"/>
+                                    </div>
+                                    {{/each}}
+                                </div>
+                                {{/if}}
+
+                                {{!-- Handle nested skill categories like 'mysticism' --}}
+                                {{#if categorySkills.mysticism}}
+                                <div class="skill-subcategory">
+                                    <h5>Mysticism Skills</h5>
+                                    {{#each categorySkills.mysticism as |subSkillValue subSkillName|}}
+                                    <div class="skill-item">
+                                        <label for="{{subSkillName}}">{{lookup @root.skillLabels subSkillName}}</label>
+                                        <input type="number" name="system.skills.{{categoryName}}.mysticism.{{subSkillName}}" value="{{subSkillValue}}" data-dtype="Number" min="0" max="5"/>
+                                    </div>
+                                    {{/each}}
+                                </div>
+                                {{/if}}
                             </div>
                             {{/each}}
                         </div>
@@ -110,21 +203,46 @@
                     <h3>Resonances</h3>
                     <p><i>Powers over fate. Check to indicate mastery.</i></p>
                     <div class="flexcol">
+                        {{!-- Updated to reflect full resonance list from template.json --}}
                         <div class="resonance-checkbox">
                             <input type="checkbox" name="system.resonances.echoOfPossibility" {{checked system.resonances.echoOfPossibility}}/>
                             <label>Echo of Possibility</label>
+                        </div>
+                        <div class="resonance-checkbox">
+                            <input type="checkbox" name="system.resonances.realityAnchor" {{checked system.resonances.realityAnchor}}/>
+                            <label>Reality Anchor</label>
+                        </div>
+                        <div class="resonance-checkbox">
+                            <input type="checkbox" name="system.resonances.phaseDrift" {{checked system.resonances.phaseDrift}}/>
+                            <label>Phase Drift</label>
+                        </div>
+                        <div class="resonance-checkbox">
+                            <input type="checkbox" name="system.resonances.voidResonance" {{checked system.resonances.voidResonance}}/>
+                            <label>Void Resonance</label>
+                        </div>
+                        <div class="resonance-checkbox">
+                            <input type="checkbox" name="system.resonances.fatebinder" {{checked system.resonances.fatebinder}}/>
+                            <label>Fatebinder</label>
+                        </div>
+                        <div class="resonance-checkbox">
+                            <input type="checkbox" name="system.resonances.fracturedReflex" {{checked system.resonances.fracturedReflex}}/>
+                            <label>Fractured Reflex</label>
+                        </div>
+                        <div class="resonance-checkbox">
+                            <input type="checkbox" name="system.resonances.mnemonicTransference" {{checked system.resonances.mnemonicTransference}}/>
+                            <label>Mnemonic Transference</label>
+                        </div>
+                        <div class="resonance-checkbox">
+                            <input type="checkbox" name="system.resonances.whisperOfThePast" {{checked system.resonances.whisperOfThePast}}/>
+                            <label>Whisper of the Past</label>
                         </div>
                         <div class="resonance-checkbox">
                             <input type="checkbox" name="system.resonances.chronoFlux" {{checked system.resonances.chronoFlux}}/>
                             <label>Chrono-Flux</label>
                         </div>
                         <div class="resonance-checkbox">
-                            <input type="checkbox" name="system.resonances.veilPierce" {{checked system.resonances.veilPierce}}/>
-                            <label>Veil Pierce</label>
-                        </div>
-                        <div class="resonance-checkbox">
-                            <input type="checkbox" name="system.resonances.resonantOverload" {{checked system.resonances.resonantOverload}}/>
-                            <label>Resonant Overload</label>
+                            <input type="checkbox" name="system.resonances.confluxAdaptation" {{checked system.resonances.confluxAdaptation}}/>
+                            <label>Conflux Adaptation</label>
                         </div>
                         <div class="form-group">
                             <label>Unique Resonance Power</label>
@@ -164,7 +282,8 @@
             <div class="main-content">
                 <div class="form-group">
                     <label>General Notes</label>
-                    {{editor system.notes target="system.notes" button=true owner=owner editable=editable}}
+                    {{!-- Changed target to system.generalNotes from system.notes --}}
+                    {{editor system.generalNotes target="system.generalNotes" button=true owner=owner editable=editable}}
                 </div>
                 <div class="relationships-section">
                     <h3>Relationships</h3>
@@ -182,5 +301,28 @@
                 </div>
             </div>
         </div>
+
+        {{!-- New tab for Fate Card --}}
+        <div class="tab fate" data-tab="fate">
+            <div class="main-content">
+                <div class="fate-section">
+                    <h3>Fate Card</h3>
+                    <p><i>The card that dictates your character's ultimate destiny.</i></p>
+                    <div class="form-group">
+                        <label for="fateCardRank">Card Rank</label>
+                        <input id="fateCardRank" type="text" name="system.fate.cardRank" value="{{system.fate.cardRank}}" placeholder="e.g., 2-5, A, K"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="fateCardSuit">Card Suit</label>
+                        <input id="fateCardSuit" type="text" name="system.fate.cardSuit" value="{{system.fate.cardSuit}}" placeholder="e.g., Clubs, Hearts, Diamonds, Spades"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="fateIsFlipped">Is Flipped to Negative?</label>
+                        <input id="fateIsFlipped" type="checkbox" name="system.fate.isFlippedToNegative" {{checked system.fate.isFlippedToNegative}}/>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
+    {{/if}}
 </form>

@@ -395,3 +395,246 @@
   text-transform: uppercase;
   margin-top: 20px;
 }
+
+.character-creation-btn {
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #333;
+  border: 2px solid #666;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-top: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.sorting-grid > .card {
+  display: flex;
+}
+
+span.card-display {
+  display: inline-block;
+  width: 145px;
+}
+
+.checkbox-group > input {
+  margin: 0 25px;
+}
+
+span.s-all {
+    cursor: pointer;
+    font-size: small;
+    float: right;
+    padding: 10px;
+}
+
+li > h2 {
+  cursor: pointer;
+}
+
+span.card {
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 5px;
+  display: inline-block;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  width: 120px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Basic styling for the character creation app */
+.resonance-zero-character-creation-app {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure it takes full height of the app window */
+}
+
+.resonance-zero-character-creation-app .sheet-header {
+    background-color: var(--color-bg-alt); /* Foundry color variable */
+    padding: 10px;
+    border-bottom: 1px solid var(--color-border-dark);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.resonance-zero-character-creation-app .sheet-header h1 {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.resonance-zero-character-creation-app .sheet-tabs {
+    flex: 0; /* Don't grow */
+    border-bottom: 1px solid var(--color-border-dark);
+}
+
+.resonance-zero-character-creation-app .sheet-tabs .item {
+    padding: 5px 10px;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+}
+
+.resonance-zero-character-creation-app .sheet-tabs .item.active {
+    border-color: var(--color-control-active);
+    font-weight: bold;
+}
+
+.resonance-zero-character-creation-app .sheet-body {
+    flex: 1; /* Take remaining space */
+    padding: 15px;
+    overflow-y: auto; /* Allow scrolling within the body */
+}
+
+.resonance-zero-character-creation-app .tab {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 20px; /* Space at the bottom of each tab */
+}
+
+/* Card Draw Section */
+.drawn-cards {
+    margin-top: 15px;
+    gap: 10px;
+}
+
+.drawn-cards .card {
+    border: 1px solid var(--color-border-dark);
+    padding: 5px 10px;
+    background-color: var(--color-bg-light);
+    border-radius: 3px;
+    min-width: 100px;
+    text-align: center;
+}
+
+/* Sorting Grid */
+.sorting-grid {
+    display: grid;
+    /* Define columns: 1 for card display, 6 for categories */
+    grid-template-columns: 150px repeat(6, 1fr);
+    gap: 5px;
+    margin-top: 20px;
+    border: 1px solid var(--color-border-dark);
+    padding: 10px;
+    background-color: var(--color-bg-alt);
+}
+
+.sorting-grid .grid-header {
+    display: contents; /* Makes children participate in parent grid */
+}
+
+.sorting-grid .grid-header > div {
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 0;
+    border-bottom: 1px solid var(--color-border-dark);
+}
+
+.sorting-grid .card-row {
+    display: contents; /* Makes children participate in parent grid */
+}
+
+.sorting-grid .card-display {
+    padding: 5px;
+    border-right: 1px solid var(--color-border-dark);
+    text-align: left;
+    white-space: nowrap; /* Prevent card name wrap */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sorting-grid .checkbox-group {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    border-right: 1px solid var(--color-border-dark);
+}
+
+.sorting-grid .checkbox-group label {
+    margin: 0; /* Remove default label margins */
+    display: flex; /* Allow label text to align with checkbox */
+    justify-content: center; /* Center checkbox */
+    flex: 1; /* Distribute space evenly */
+}
+
+.sorting-grid .checkbox-group input[type="radio"] {
+    margin: 0; /* Center radio button */
+    /* You might need more specific styling for radio buttons */
+    /* For instance, if you want larger clickable areas, wrap input in its own div */
+}
+
+/* Last column has no right border */
+.sorting-grid .checkbox-group:last-child {
+    border-right: none;
+}
+
+/* Specific button styles */
+.resonance-zero-character-creation-app button {
+    padding: 8px 12px;
+    background-color: var(--color-control-outline);
+    border: 1px solid var(--color-border-dark);
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9em;
+    color: var(--color-text-light);
+}
+
+.resonance-zero-character-creation-app button:hover:not(:disabled) {
+    background-color: var(--color-control-hover);
+}
+
+.resonance-zero-character-creation-app button:disabled {
+    background-color: var(--color-control-inactive);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.reset-selection {
+    margin-left: auto; /* Push to the right */
+    white-space: nowrap;
+}
+
+/* Hide elements when 'hidden' class is applied */
+.hidden {
+    display: none !important;
+}
+
+/* Basic form group styling */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"] {
+    padding: 5px;
+    border: 1px solid var(--color-border-dark);
+    background-color: var(--color-bg-light);
+    color: var(--color-text-light);
+    border-radius: 3px;
+}
+
+.sorting-grid td {
+  text-align: center;
+}
+.sorting-grid th {
+    padding: 10px 20px;
+
+}
+
+/* In systems/resonance-zero-srp/css/resonance-zero-srp.css */
+
+.drawn-cards-container .card-display img {
+    pointer-events: none; /* Make the image non-interactive for mouse events */
+}

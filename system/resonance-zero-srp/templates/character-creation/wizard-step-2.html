@@ -1,0 +1,212 @@
+<div class="wizard-step card-allocation-step">
+    <h1>Card Draw and Allocation</h1>
+    <p>Draw 10 random cards from the deck. Then, drag and drop these cards into the appropriate sections below to determine your character's attributes, skills, resonances, gear, and fate.</p>
+
+    <div class="draw-cards-section">
+        <button type="button" class="draw-cards-button" data-action="drawCards">Draw 10 Cards</button>
+        <div class="drawn-cards-container">
+            {{#each system._characterCreation.drawnCards}}
+            <div class="card-display" data-card-suit="{{this.suit}}" data-card-rank="{{this.rank}}">
+                <img src="systems/resonance-zero-srp/assets/cards/{{this.rank}}-of-{{this.suit}}.png" class="card-image   modules/resonance-zero-srp-cards/cards/{{this.suit}}-{{this.rank}}.webp" alt="{{this.rank}} of {{this.suit}}" title="{{this.rank}} of {{this.suit}}">
+                <span class="card-label">{{this.rank}} of {{this.suit}}</span>
+            </div>
+            {{else}}
+            <button type="button" class="draw-cards-button" data-action="drawCards">Draw 10 Cards</button>
+            <p class="no-cards-message">Click "Draw 10 Cards" to begin!</p>
+            {{/each}}
+        </div>
+    </div>
+
+    <hr/>
+
+    <div class="allocation-sections">
+        <div class="attributes-area allocation-area">
+            <h3>Attributes (4 Cards)</h3>
+            <div class="card-slots">
+                {{#each system._characterCreation.allocatedCards.attributes}}
+                    <div class="card-slot card-display" data-card-suit="{{this.suit}}" data-card-rank="{{this.rank}}">
+                        <img src="modules/resonance-zero-srp-cards/cards/{{this.suit}}-{{this.rank}}.webp" alt="{{this.rank}} of {{this.suit}}" title="{{this.rank}} of {{this.suit}}">
+                    </div>
+                {{else}}
+                    <div class="card-slot empty-slot">Drop Attribute Card Here</div>
+                    <div class="card-slot empty-slot">Drop Attribute Card Here</div>
+                    <div class="card-slot empty-slot">Drop Attribute Card Here</div>
+                    <div class="card-slot empty-slot">Drop Attribute Card Here</div>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="skills-area allocation-area">
+            <h3>Skills (2 Cards)</h3>
+            <div class="card-slots">
+                {{#each system._characterCreation.allocatedCards.skills}}
+                    <div class="card-slot card-display" data-card-suit="{{this.suit}}" data-card-rank="{{this.rank}}">
+                        <img src="modules/resonance-zero-srp-cards/cards/{{this.suit}}-{{this.rank}}.webp" alt="{{this.rank}} of {{this.suit}}" title="{{this.rank}} of {{this.suit}}">
+                    </div>
+                {{else}}
+                    <div class="card-slot empty-slot">Drop Skill Card Here</div>
+                    <div class="card-slot empty-slot">Drop Skill Card Here</div>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="resonances-area allocation-area">
+            <h3>Resonances (1 Card)</h3>
+            <div class="card-slots">
+                {{#each system._characterCreation.allocatedCards.resonances}}
+                    <div class="card-slot card-display" data-card-suit="{{this.suit}}" data-card-rank="{{this.rank}}">
+                        <img src="modules/resonance-zero-srp-cards/cards/{{this.suit}}-{{this.rank}}.webp" alt="{{this.rank}} of {{this.suit}}" title="{{this.rank}} of {{this.suit}}">
+                    </div>
+                {{else}}
+                    <div class="card-slot empty-slot">Drop Resonance Card Here</div>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="gear-area allocation-area">
+            <h3>Gear (2 Cards)</h3>
+            <div class="card-slots">
+                {{#each system._characterCreation.allocatedCards.gear}}
+                    <div class="card-slot card-display" data-card-suit="{{this.suit}}" data-card-rank="{{this.rank}}">
+                        <img src="modules/resonance-zero-srp-cards/cards/{{this.suit}}-{{this.rank}}.webp" alt="{{this.rank}} of {{this.suit}}" title="{{this.rank}} of {{this.suit}}">
+                    </div>
+                {{else}}
+                    <div class="card-slot empty-slot">Drop Gear Card Here</div>
+                    <div class="card-slot empty-slot">Drop Gear Card Here</div>
+                {{/each}}
+            </div>
+        </div>
+
+        <div class="fate-area allocation-area">
+            <h3>Fate (1 Card)</h3>
+            <div class="card-slots">
+                {{#each system._characterCreation.allocatedCards.fate}}
+                    <div class="card-slot card-display" data-card-suit="{{this.suit}}" data-card-rank="{{this.rank}}">
+                        <img src="modules/resonance-zero-srp-cards/cards/{{this.suit}}-{{this.rank}}.webp" alt="{{this.rank}} of {{this.suit}}" title="{{this.rank}} of {{this.suit}}">
+                    </div>
+                {{else}}
+                    <div class="card-slot empty-slot">Drop Fate Card Here</div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+
+    <div class="wizard-navigation">
+        <button type="button" class="wizard-navigation-button" data-action="prevStep">&laquo; Previous Step</button>
+        <button type="button" class="wizard-navigation-button" data-action="nextStep">Next Step &raquo;</button>
+    </div>
+</div>
+
+<style>
+    .card-allocation-step .draw-cards-section,
+    .card-allocation-step .allocation-sections {
+        margin-top: 20px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f5f5f5;
+    }
+    .card-allocation-step .draw-cards-button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.1em;
+        margin-bottom: 15px;
+    }
+    .card-allocation-step .drawn-cards-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        min-height: 120px; /* Space for cards */
+        border: 1px dashed #bbb;
+        padding: 10px;
+        border-radius: 4px;
+        background-color: #eee;
+        justify-content: center; /* Center cards if few */
+        align-items: center; /* Vertically center if few */
+    }
+    .card-allocation-step .no-cards-message {
+        color: #777;
+        font-style: italic;
+    }
+    .card-allocation-step .card-display {
+        width: 70px; /* Standard card width */
+        height: 96px; /* Standard card height */
+        border: 1px solid #999;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8em;
+        text-align: center;
+        background-color: white;
+        position: relative; /* For image positioning */
+        cursor: grab; /* Indicates draggable */
+    }
+    .card-allocation-step .card-display img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 4px;
+    }
+    .card-allocation-step .card-display .card-label {
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.6);
+        color: white;
+        padding: 2px 0;
+        font-size: 0.7em;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+    .card-allocation-step .allocation-sections {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+    }
+    .card-allocation-step .allocation-area {
+        border: 1px solid #a0a0a0;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #e8e8e8;
+        min-height: 150px;
+        text-align: center;
+    }
+    .card-allocation-step .allocation-area h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 1.1em;
+        color: #333;
+    }
+    .card-allocation-step .card-slots {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        min-height: 100px;
+        border: 1px dashed #b0b0b0;
+        padding: 5px;
+        border-radius: 3px;
+        justify-content: center;
+        align-items: center;
+    }
+    .card-allocation-step .empty-slot {
+        width: 70px;
+        height: 96px;
+        border: 2px dashed #999;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #777;
+        font-size: 0.8em;
+        background-color: #f0f0f0;
+    }
+</style>
